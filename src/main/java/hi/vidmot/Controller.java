@@ -8,7 +8,6 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Region;
-import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
 public class Controller {
