@@ -22,7 +22,7 @@ public class Controller {
         xPosition.addListener((observable, oldValue, newValue) -> setBackgroundPositions(content, xPosition.get()));
         Timeline timeline = new Timeline(
                 new KeyFrame(Duration.ZERO, new KeyValue(xPosition, 0)),
-                new KeyFrame(Duration.seconds(200), new KeyValue(xPosition, -15000))
+                new KeyFrame(Duration.seconds(200), new KeyValue(xPosition, -30000))
         );
         timeline.play();
     }
