@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<fx:root maxHeight="33.35" maxWidth="33.35" minHeight="33.35" minWidth="33.35" prefHeight="33.35" prefWidth="32.35" type="Pane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Circle centerX="16.675" centerY="16.675" fill="RED" radius="25.0" />
+   </children>
+</fx:root>
