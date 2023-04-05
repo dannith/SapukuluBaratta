@@ -1,7 +1,8 @@
 .root{
--fx-background-size: contain, contain, contain, contain, contain, contain;
+-fx-background-size: 25%, contain, contain, contain, contain, contain, contain;
     -fx-background-position: bottom, bottom, bottom, bottom, bottom, bottom;
     -fx-background-repeat: repeat-x, repeat-x, repeat-x, repeat-x, repeat-x, repeat-x;
     -fx-background-image:
-    url("https://cdn.discordapp.com/attachments/1083324993825415219/1093185860935106610/Untitled.png")
+    url("https://cdn.discordapp.com/attachments/1083324993825415219/1093185860935106610/Untitled.png%22")
     }
+
