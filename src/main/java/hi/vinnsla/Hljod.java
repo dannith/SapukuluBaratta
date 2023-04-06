@@ -1,6 +1,10 @@
 package hi.vinnsla;
 
 import java.io.File;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import javafx.fxml.Initializable;
 import javafx.scene.;
 
 
@@ -9,11 +13,15 @@ public class Hljod {
     public final String leikjatonlist = "";
 
     private File file;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
     //private Media media;
 
     //private MediaPlayer mediaPlayer;
 
-    //kalli
 
 
 
