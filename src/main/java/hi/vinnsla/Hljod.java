@@ -10,6 +10,10 @@ public class Hljod {
     private File file;
     private Media media;
 
+    private MediaPlayer mediaPlayer;
+
+
+
 
 
 }
