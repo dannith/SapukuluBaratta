@@ -7,16 +7,22 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.layout.Region;
 import javafx.util.Duration;
+import hi.vinnsla.Hljod;
 
-public class Controller {
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
+public class Controller implements Initializable{
     public Region content;
 
-    public void initialize()
-    {
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Hljod.spila();
         DoubleProperty xPosition = new SimpleDoubleProperty(0);
         xPosition.addListener((observable, oldValue, newValue) -> setBackgroundPositions(content, xPosition.get()));
         Timeline timeline = new Timeline(
@@ -25,6 +31,9 @@ public class Controller {
         );
         timeline.play();
     }
+
+
+
 
     private void setBackgroundPositions(Region region, double xPosition) {
         String style = "-fx-background-position: " +
@@ -41,4 +50,6 @@ public class Controller {
     public void onExitButton(ActionEvent actionEvent) {
         System.exit(2);
     }
+
+
 }

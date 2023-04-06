@@ -1,30 +1,24 @@
 package hi.vinnsla;
 
 import java.io.File;
-import java.net.URL;
-import java.util.ResourceBundle;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
-import javafx.fxml.Initializable;
-import javafx.scene.;
 
 
 public class Hljod {
-    public final String forsidatonlist = "C:\\Users\\Lenovo\\IdeaProjects\\lokaverk\\SapukuluBaratta\\src\\main\\resources\\hi\\Tonlist\\Forsida.mp3";
-    public final String leikjatonlist = "";
+    public static final String forsidatonlist = "C:\\Users\\andri\\IdeaProjects\\SapukuluBaratta\\src\\main\\resources\\hi\\Tonlist\\Forsida.mp3";
+    //public final String leikjatonlist = "";
+    private static File file;
+    private static Media media;
+    private static MediaPlayer mediaPlayer;
 
-    private File file;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
+    public static void spila(){
+        file = new File(forsidatonlist);
+        media = new Media(file.toURI().toString());
+        mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.play();
     }
-    //private Media media;
-
-    //private MediaPlayer mediaPlayer;
-
-
-
-
-
-
 }
