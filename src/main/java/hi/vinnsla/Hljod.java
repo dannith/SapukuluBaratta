@@ -6,7 +6,7 @@ import javafx.scene.media.MediaPlayer;
 
 
 public class Hljod {
-    public static final String forsidatonlist = "C:\\Users\\andri\\IdeaProjects\\SapukuluBaratta\\src\\main\\resources\\hi\\Tonlist\\Forsida.mp3";
+    public static final String forsidatonlist = "target/classes/hi/Tonlist/Forsida.mp3";
     private static MediaPlayer mediaPlayer;
 
     public static void play(){
