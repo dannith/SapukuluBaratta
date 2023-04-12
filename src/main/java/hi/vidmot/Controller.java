@@ -34,6 +34,8 @@ public class Controller implements Initializable{
     @FXML
     public AnchorPane fxAnchorRoot;
 
+    public boolean opid = false;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -77,11 +79,16 @@ public class Controller implements Initializable{
     }
 
     public void onScoreBoard(ActionEvent event) throws IOException {
-        Millisena.lesa(this,fxContent,fxAnchorRoot, fxScoreBoardButton, "score-view.fxml");
-
+        if(opid == false){
+            Millisena.lesa(this, fxContent, fxAnchorRoot, fxScoreBoardButton, "score-view.fxml");
+            opid = true;
+        }
     }
 
     public void onControles(ActionEvent event) throws IOException {
-        Millisena.lesa(this,fxContent,fxAnchorRoot, fxControlsButton, "controler-view.fxml");
+        if (opid == false){
+            Millisena.lesa(this,fxContent,fxAnchorRoot, fxControlsButton, "controler-view.fxml");
+            opid = true;
+        }
     }
 }

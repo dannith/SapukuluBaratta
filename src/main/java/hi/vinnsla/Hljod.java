@@ -7,10 +7,10 @@ import javafx.scene.media.MediaPlayer;
 
 public class Hljod {
     public static final String forsidatonlist = "target/classes/hi/Tonlist/Forsida.mp3";
+    public static final String leikjatonlist = "";
     private static MediaPlayer mediaPlayer;
 
     public static void play(){
-        //public final String leikjatonlist = "";
         File file = new File(forsidatonlist);
         Media media = new Media(file.toURI().toString());
         mediaPlayer = new MediaPlayer(media);
