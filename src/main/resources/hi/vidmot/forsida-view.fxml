@@ -42,7 +42,7 @@
                            <graphic>
                               <ImageView fitHeight="68.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Myndir/mute.jpg" />
+                                    <Image url="@../Myndir/soundOff.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -51,7 +51,7 @@
                            <graphic>
                               <ImageView fitHeight="68.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" styleClass="Buttons">
                                  <image>
-                                    <Image url="@../Myndir/sound.png" />
+                                    <Image url="@../Myndir/soundOn.png" />
                                  </image>
                               </ImageView>
                            </graphic>
