@@ -51,7 +51,7 @@
                            <graphic>
                               <ImageView fitHeight="68.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" styleClass="Buttons">
                                  <image>
-                                    <Image url="@../Myndir/sound.jpg" />
+                                    <Image url="@../Myndir/sound.png" />
                                  </image>
                               </ImageView>
                            </graphic>
