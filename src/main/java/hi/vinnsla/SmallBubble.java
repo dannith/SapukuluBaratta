@@ -1,2 +1,3 @@
-package hi.vinnsla;public class SmallBubble {
+package hi.vinnsla;
+public class SmallBubble {
 }
