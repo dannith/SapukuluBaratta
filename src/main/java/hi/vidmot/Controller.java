@@ -2,6 +2,7 @@ package hi.vidmot;
 
 
 import hi.vinnsla.*;
+import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -12,8 +13,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
 
@@ -30,11 +31,15 @@ public class Controller implements Initializable{
     @FXML
     public Button fxControlsButton;
     @FXML
-    public StackPane fxContent;
+    public HBox fxContent;
     @FXML
     public AnchorPane fxAnchorRoot;
 
     public boolean opid = false;
+    @FXML
+    public Pane kalli;
+
+    public boolean faraupp = false;
 
 
     @Override
@@ -54,7 +59,7 @@ public class Controller implements Initializable{
 
 
 
-    private void setBackgroundPositions(StackPane fxContent, double xPosition) {
+    private void setBackgroundPositions(HBox fxContent, double xPosition) {
         String style = "-fx-background-position: " +
                 "left " + xPosition/6 + "px bottom," +
                 "left " + xPosition/5 + "px bottom," +
@@ -79,16 +84,39 @@ public class Controller implements Initializable{
     }
 
     public void onScoreBoard(ActionEvent event) throws IOException {
-        if(opid == false){
+        /*if(opid == false){
             Millisena.lesa(this, fxContent, fxAnchorRoot, fxScoreBoardButton, "score-view.fxml");
             opid = true;
-        }
+        }*/
+        faraUpp();
     }
 
     public void onControles(ActionEvent event) throws IOException {
-        if (opid == false){
-            Millisena.lesa(this,fxContent,fxAnchorRoot, fxControlsButton, "controler-view.fxml");
-            opid = true;
+        faraUpp();
+    }
+
+    private void faraUpp(){
+        if (faraupp == false){
+            kalli.setTranslateY(495);
+            Timeline timeline= new Timeline();
+            KeyValue kv = new KeyValue(kalli.translateYProperty(),15, Interpolator.EASE_IN);
+            KeyFrame kf = new KeyFrame(Duration.seconds(2),kv);
+            timeline.getKeyFrames().add(kf);
+            timeline.setOnFinished(event1 -> {
+                faraupp = true;
+                // parentContainer.getChildren().remove(anchorRoot);
+            });
+            timeline.play();
+        }else{
+            Timeline timeline= new Timeline();
+            KeyValue kv = new KeyValue(kalli.translateYProperty(),-500, Interpolator.EASE_IN);
+            KeyFrame kf = new KeyFrame(Duration.seconds(2),kv);
+            timeline.getKeyFrames().add(kf);
+            timeline.setOnFinished(event1 -> {
+                faraupp = false;
+                //parentContainer.getChildren().remove(anchorRoot);
+            });
+            timeline.play();
         }
     }
 }

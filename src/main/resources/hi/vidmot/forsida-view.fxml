@@ -6,66 +6,65 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane fx:id="fxContent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="474.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.vidmot.Controller">
+<?import hi.vidmot.ControlsView?>
+<HBox fx:id="fxContent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.vidmot.Controller">
 <stylesheets>
    <URL value="@../../CSS/kulumynd.css" />
    <URL value="@../../CSS/bakgrunnurmynd.css" />
 </stylesheets>
    <children>
-      <AnchorPane fx:id="fxAnchorRoot" prefHeight="200.0" prefWidth="200.0">
+      <Pane prefHeight="474.0" prefWidth="481.0">
          <children>
-            <VBox layoutX="482.0" layoutY="49.0" prefHeight="413.0" prefWidth="294.0">
-               <children>
-                  <Button layoutX="20.0" layoutY="45.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="300.0" styleClass="Buttons" stylesheets="@../../CSS/Stylesheet.css">
-                     <VBox.margin>
-                        <Insets bottom="10.0" />
-                     </VBox.margin>
+            <ControlsView fx:id="kalli" minWidth="450" minHeight="450" translateX="15" translateY="495" />
+         </children></Pane>
+      <VBox prefHeight="413.0" prefWidth="294.0">
+         <children>
+            <Button layoutX="20.0" layoutY="45.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="300.0" styleClass="Buttons" stylesheets="@../../CSS/Stylesheet.css">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="fxPlayButton" mnemonicParsing="false" onAction="#onPlay" prefHeight="90.0" prefWidth="300.0" styleClass="Buttons" stylesheets="@../../CSS/Stylesheet.css" text="Play">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="fxScoreBoardButton" mnemonicParsing="false" onAction="#onScoreBoard" prefHeight="90.0" prefWidth="300.0" styleClass="Buttons" stylesheets="@../../CSS/Stylesheet.css" text="ScoreBoard">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="fxControlsButton" mnemonicParsing="false" onAction="#onControles" prefHeight="90.0" prefWidth="300.0" styleClass="Buttons" stylesheets="@../../CSS/Stylesheet.css" text="Controls">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Button>
+            <ToolBar prefHeight="90.0" prefWidth="300.0" styleClass="Buttons" stylesheets="@../../CSS/Stylesheet.css">
+               <items>
+                  <Button mnemonicParsing="false" onAction="#onMuteButton" prefHeight="83.0" prefWidth="97.0" styleClass="Buttons" stylesheets="@../../CSS/Stylesheet.css">
+                     <graphic>
+                        <ImageView fitHeight="68.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Myndir/mute.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
-                  <Button fx:id="fxPlayButton" mnemonicParsing="false" onAction="#onPlay" prefHeight="90.0" prefWidth="300.0" styleClass="Buttons" stylesheets="@../../CSS/Stylesheet.css" text="Play">
-                     <VBox.margin>
-                        <Insets bottom="10.0" />
-                     </VBox.margin>
+                  <Button mnemonicParsing="false" onAction="#onSoundHandler" prefHeight="83.0" prefWidth="97.0" styleClass="Buttons" stylesheets="@../../CSS/Stylesheet.css">
+                     <graphic>
+                        <ImageView fitHeight="68.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" styleClass="Buttons">
+                           <image>
+                              <Image url="@../Myndir/sound.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
-                  <Button fx:id="fxScoreBoardButton" mnemonicParsing="false" onAction="#onScoreBoard" prefHeight="90.0" prefWidth="300.0" styleClass="Buttons" stylesheets="@../../CSS/Stylesheet.css" text="ScoreBoard">
-                     <VBox.margin>
-                        <Insets bottom="10.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button fx:id="fxControlsButton" mnemonicParsing="false" onAction="#onControles" prefHeight="90.0" prefWidth="300.0" styleClass="Buttons" stylesheets="@../../CSS/Stylesheet.css" text="Controls">
-                     <VBox.margin>
-                        <Insets bottom="10.0" />
-                     </VBox.margin>
-                  </Button>
-                  <ToolBar prefHeight="90.0" prefWidth="300.0" styleClass="Buttons" stylesheets="@../../CSS/Stylesheet.css">
-                     <items>
-                        <Button mnemonicParsing="false" onAction="#onMuteButton" prefHeight="83.0" prefWidth="97.0" styleClass="Buttons" stylesheets="@../../CSS/Stylesheet.css">
-                           <graphic>
-                              <ImageView fitHeight="68.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../Myndir/mute.jpg" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button mnemonicParsing="false" onAction="#onSoundHandler" prefHeight="83.0" prefWidth="97.0" styleClass="Buttons" stylesheets="@../../CSS/Stylesheet.css">
-                           <graphic>
-                              <ImageView fitHeight="68.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" styleClass="Buttons">
-                                 <image>
-                                    <Image url="@../Myndir/sound.jpg" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                     </items>
-                  </ToolBar>
-               </children>
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-            </VBox>
-
-
+               </items>
+            </ToolBar>
          </children>
-      </AnchorPane>
-   </children>
-</StackPane>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+      </children>
+</HBox>
