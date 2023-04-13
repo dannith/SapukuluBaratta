@@ -37,7 +37,7 @@ public class Controller implements Initializable{
 
     public boolean opid = false;
     @FXML
-    public Pane kalli;
+    public Pane fxControls;
 
     public boolean faraupp = false;
 
@@ -97,9 +97,9 @@ public class Controller implements Initializable{
 
     private void faraUpp(){
         if (faraupp == false){
-            kalli.setTranslateY(495);
+            fxControls.setTranslateY(495);
             Timeline timeline= new Timeline();
-            KeyValue kv = new KeyValue(kalli.translateYProperty(),15, Interpolator.EASE_IN);
+            KeyValue kv = new KeyValue(fxControls.translateYProperty(),15, Interpolator.EASE_IN);
             KeyFrame kf = new KeyFrame(Duration.seconds(2),kv);
             timeline.getKeyFrames().add(kf);
             timeline.setOnFinished(event1 -> {
@@ -109,7 +109,7 @@ public class Controller implements Initializable{
             timeline.play();
         }else{
             Timeline timeline= new Timeline();
-            KeyValue kv = new KeyValue(kalli.translateYProperty(),-500, Interpolator.EASE_IN);
+            KeyValue kv = new KeyValue(fxControls.translateYProperty(),-500, Interpolator.EASE_IN);
             KeyFrame kf = new KeyFrame(Duration.seconds(2),kv);
             timeline.getKeyFrames().add(kf);
             timeline.setOnFinished(event1 -> {

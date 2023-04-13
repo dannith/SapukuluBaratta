@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
-
 import java.io.IOException;
 
 public class ControlsView extends Pane {
@@ -21,22 +20,18 @@ public class ControlsView extends Pane {
     }
     @FXML
     public Text fxTexti;
-
     @FXML
     public void onClickDown(ActionEvent actionEvent) {
         fxTexti.setText("Player moves down");
     }
-
     @FXML
     public void onClickLeft(ActionEvent actionEvent) {
         fxTexti.setText("Player moves Left");
     }
-
     @FXML
     public void onClickRight(ActionEvent actionEvent) {
         fxTexti.setText("Player moves Right");
     }
-
     @FXML
     public void onClickUp(ActionEvent actionEvent) {
         fxTexti.setText("Player moves Up");

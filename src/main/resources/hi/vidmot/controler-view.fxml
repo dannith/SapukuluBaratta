@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<fx:root type="Pane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" >
+<fx:root prefHeight="450.0" prefWidth="450.0" type="Pane" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Text layoutX="241.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Controls">
          <font>
@@ -53,6 +53,5 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="fxBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onClickBack" text="Back To Main" />
    </children>
 </fx:root>
