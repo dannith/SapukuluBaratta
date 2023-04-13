@@ -5,7 +5,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.layout.*?>
 
-<fx:root type="Pane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root type="Pane" prefHeight="450.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ListView layoutX="103.0" layoutY="95.0" prefHeight="297.0" prefWidth="394.0" />
       <Text layoutX="193.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ScoreBoard" wrappingWidth="214.80340576171875">

@@ -37,9 +37,13 @@ public class Controller implements Initializable{
 
     public boolean opid = false;
     @FXML
-    public Pane fxControls;
-
+    public Pane fxpane;
+    @FXML
+    public ControlsView fxControls;
+    @FXML
+    public StigView fxStigview;
     public boolean faraupp = false;
+
 
 
     @Override
@@ -83,19 +87,19 @@ public class Controller implements Initializable{
         //í leik
     }
 
-    public void onScoreBoard(ActionEvent event) throws IOException {
-        faraUpp();
+    public void onScoreBoard(ActionEvent event) {
+        faraUpp(fxStigview);
     }
 
-    public void onControles(ActionEvent event) throws IOException {
-        faraUpp();
+    public void onControles(ActionEvent event) {
+        faraUpp(fxControls);
     }
 
-    private void faraUpp(){
-        if (faraupp == false){
-            fxControls.setTranslateY(495);
+    private void faraUpp(Pane klasi){
+        if (!faraupp){
+            klasi.setTranslateY(495);
             Timeline timeline= new Timeline();
-            KeyValue kv = new KeyValue(fxControls.translateYProperty(),15, Interpolator.EASE_IN);
+            KeyValue kv = new KeyValue(klasi.translateYProperty(),15, Interpolator.EASE_IN);
             KeyFrame kf = new KeyFrame(Duration.seconds(2),kv);
             timeline.getKeyFrames().add(kf);
             timeline.setOnFinished(event1 -> {
@@ -104,7 +108,7 @@ public class Controller implements Initializable{
             timeline.play();
         }else{
             Timeline timeline= new Timeline();
-            KeyValue kv = new KeyValue(fxControls.translateYProperty(),-500, Interpolator.EASE_IN);
+            KeyValue kv = new KeyValue(klasi.translateYProperty(),-500, Interpolator.EASE_IN);
             KeyFrame kf = new KeyFrame(Duration.seconds(2),kv);
             timeline.getKeyFrames().add(kf);
             timeline.setOnFinished(event1 -> {
