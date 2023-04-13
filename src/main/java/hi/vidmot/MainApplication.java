@@ -18,7 +18,6 @@ private Image setIcon(){
         Parent root = FXMLLoader.load(getClass().getResource("forsida-view.fxml"));
         stage.setTitle("Bubble Struggle");
         Scene scene  = new Scene(root);
-
         stage.setScene(scene);
         stage.getIcons().add(setIcon());
         stage.show();

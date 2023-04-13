@@ -7,16 +7,13 @@ import java.io.IOException;
 
 public class StigView extends Pane {
     public StigView(){
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("controler-view.fxml"));
-        fxmlLoader.setRoot(this);   // rótin á viðmótstrénu sett hér
-        fxmlLoader.setController(this); // controllerinn settur hér en ekki í .fxml skránni
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("score-view.fxml"));
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
         try {
-            fxmlLoader.load();          // viðmótstréð lesið inn (þ.e. .fxml skráin)
+            fxmlLoader.load();
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
     }
-
-
-
 }

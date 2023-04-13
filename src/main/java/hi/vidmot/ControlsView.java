@@ -1,8 +1,12 @@
 package hi.vidmot;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import java.io.IOException;
@@ -10,10 +14,10 @@ import java.io.IOException;
 public class ControlsView extends Pane {
     public ControlsView(){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("controler-view.fxml"));
-        fxmlLoader.setRoot(this);   // rótin á viðmótstrénu sett hér
-        fxmlLoader.setController(this); // controllerinn settur hér en ekki í .fxml skránni
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
         try {
-            fxmlLoader.load();          // viðmótstréð lesið inn (þ.e. .fxml skráin)
+            fxmlLoader.load();
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }

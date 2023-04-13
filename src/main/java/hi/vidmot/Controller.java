@@ -84,10 +84,6 @@ public class Controller implements Initializable{
     }
 
     public void onScoreBoard(ActionEvent event) throws IOException {
-        /*if(opid == false){
-            Millisena.lesa(this, fxContent, fxAnchorRoot, fxScoreBoardButton, "score-view.fxml");
-            opid = true;
-        }*/
         faraUpp();
     }
 
@@ -104,7 +100,6 @@ public class Controller implements Initializable{
             timeline.getKeyFrames().add(kf);
             timeline.setOnFinished(event1 -> {
                 faraupp = true;
-                // parentContainer.getChildren().remove(anchorRoot);
             });
             timeline.play();
         }else{
@@ -114,7 +109,6 @@ public class Controller implements Initializable{
             timeline.getKeyFrames().add(kf);
             timeline.setOnFinished(event1 -> {
                 faraupp = false;
-                //parentContainer.getChildren().remove(anchorRoot);
             });
             timeline.play();
         }
