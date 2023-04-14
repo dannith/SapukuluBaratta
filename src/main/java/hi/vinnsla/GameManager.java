@@ -21,10 +21,12 @@ public class GameManager {
     private static int elapsedSeconds = 0;
     private static double countdown;
     private static double timer;
+    final private static int maxLives = 5;
+    private static int lives;
 
     private static List<Bubble> levelBubbles;
 
-    public static GameState state = GameState.reset;
+    public static GameState state;
 
 
     public static void initManager(){
@@ -45,24 +47,7 @@ public class GameManager {
     }
 
     public static void init(){
-        /*
-            Tæmir núverandi hluti í arraylist.
-            Setja hluti úr fxml skrá núverandi borðs í arraylist sem verður svo unnið með
-            Vistar staðsetningu þeirra.
-         */
-        state = GameState.reset;
-        setup();
-    }
-    private static void setup(){
-        /*
-            Reset leikhluti (upphafsstilla þá)
-            Stilla líf ef á við
-            Taka út aukabubbles
-            Reset leikjatimer
-            Reset countdown.
-         */
-        countdown = 3;
-        timer = 10;
+        setState(GameState.reset);
     }
 
     private static void gameLoop() {
@@ -75,16 +60,49 @@ public class GameManager {
     }
 
     private static void update(){
-        if(countdown > 0) countdown -= deltaTime;
-        else if(timer > 0){
-            System.out.println("Leikur byrjaður");
-            timer -= deltaTime;
-            for(Bubble bubble : levelBubbles)
-                bubble.update(deltaTime);
+        switch (state){
+            case starting:
+                if(countdown > 0) {
+                    countdown -= deltaTime;
+                }
+                else setState(GameState.ongoing);
+                break;
+            case ongoing:
+                timer -= deltaTime;
+                for(Bubble bubble : levelBubbles)
+                    bubble.update(deltaTime);
+                if(timer <= 0)
+                    setState(GameState.lose);
+                break;
         }
-        else{
-            System.out.println("Game Over, kalla á setup");
-            setup();
+    }
+
+    public static void setState(GameState nextState){
+        switch(nextState){
+            case reset:
+                lives = maxLives;
+                setState(GameState.starting);
+                break;
+            case starting:
+                countdown = 3;
+
+                System.out.println("Starting..");
+                state = GameState.starting;
+                break;
+            case ongoing:
+                System.out.print("Round started");
+                timer = 5;
+
+                state = GameState.ongoing;
+                break;
+            case lose:
+                lives--;
+                System.out.println("Lost round");
+                if(lives == 0){
+                    setState(GameState.reset);
+                    System.out.println("Game Over");
+                } else setState(GameState.starting);
+                break;
         }
     }
 
