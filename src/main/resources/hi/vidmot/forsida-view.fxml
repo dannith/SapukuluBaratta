@@ -18,8 +18,8 @@
          <children>
             <Pane fx:id="fxpane" prefHeight="480.0" prefWidth="440.0">
                <children>
-                  <StigView prefHeight="450.0" prefWidth="440.0" />
-                  <ControlsView prefHeight="450.0" prefWidth="440.0" />
+                  <StigView fx:id="fxStigview" prefHeight="450.0" prefWidth="440.0" />
+                  <ControlsView fx:id="fxControls" prefHeight="450.0" prefWidth="440.0" />
                </children></Pane>
             <VBox fx:id="fxmenus" prefHeight="500.0" prefWidth="295.0">
                <children>

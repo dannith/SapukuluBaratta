@@ -19,12 +19,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
-
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
 
 
 public class Controller implements Initializable{
@@ -58,6 +57,9 @@ public class Controller implements Initializable{
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Hljod.play();
 
+        fxControls.setTranslateY(500);
+        fxStigview.setTranslateY(500);
+
         DoubleProperty xPosition = new SimpleDoubleProperty(0);
         xPosition.addListener((observable, oldValue, newValue) -> setBackgroundPositions(fxContent, xPosition.get()));
         Timeline timeline = new Timeline(
@@ -66,7 +68,6 @@ public class Controller implements Initializable{
         );
         timeline.play();
     }
-
 
     private void setBackgroundPositions(AnchorPane fxContent, double xPosition) {
         String style = "-fx-background-position: " +
@@ -112,27 +113,17 @@ public class Controller implements Initializable{
         faraUpp(fxControls);
     }
 
-
     private void faraUpp(Pane klasi){
-        if (!faraupp){
-            klasi.setTranslateY(495);
-            Timeline timeline= new Timeline();
-            KeyValue kv = new KeyValue(klasi.translateYProperty(),15, Interpolator.EASE_IN);
-            KeyFrame kf = new KeyFrame(Duration.seconds(2),kv);
-            timeline.getKeyFrames().add(kf);
-            timeline.setOnFinished(event1 -> {
-                faraupp = true;
-            });
-            timeline.play();
-        }else{
-            Timeline timeline= new Timeline();
-            KeyValue kv = new KeyValue(klasi.translateYProperty(),-500, Interpolator.EASE_IN);
-            KeyFrame kf = new KeyFrame(Duration.seconds(2),kv);
-            timeline.getKeyFrames().add(kf);
-            timeline.setOnFinished(event1 -> {
-                faraupp = false;
-            });
-            timeline.play();
-        }
+        Timeline timeline= new Timeline();
+        KeyValue kv = new KeyValue(klasi.translateYProperty(),klasi.getTranslateY()-500, Interpolator.EASE_IN);
+        KeyFrame kf = new KeyFrame(Duration.seconds(2),kv);
+        timeline.getKeyFrames().add(kf);
+        timeline.setOnFinished(event1 -> {
+            if (klasi.getTranslateY()<0){
+                klasi.setTranslateY(500);
+            }
+        });
+        timeline.play();
     }
+
 }
