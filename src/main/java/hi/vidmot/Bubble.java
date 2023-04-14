@@ -4,11 +4,12 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Grunnklasi fyrir allar búbblur
@@ -18,7 +19,7 @@ public class Bubble extends Pane {
     public Circle fxBubble;
     private boolean enabled;
     private double radius;
-    private double gravity = 980;
+    private double gravity = 98;
     private double bounce;  // nýr hraði kúlu eftir hún rekst á gólf/loft
     private double xStartPos;
     private double yStartPos;
@@ -44,10 +45,11 @@ public class Bubble extends Pane {
     }
 
     public void init() {
-        xStartSpeed = 300;
+        xStartSpeed = 200;
         yStartSpeed = 0;
         xStartPos = 0;
         yStartPos = 0;
+        bounce = 500;
         xPosition = new SimpleDoubleProperty(xStartPos);
         yPosition = new SimpleDoubleProperty(yStartPos);
         fxBubble.centerXProperty().bind(xPosition);
@@ -62,15 +64,45 @@ public class Bubble extends Pane {
         xSpeed = xStartSpeed;
         ySpeed = yStartSpeed;
     }
-    public void update(double deltaTime){
+    public void update(double deltaTime, List<Rectangle> levelCollidables){
         if(enabled){
             xPosition.set(xPosition.get() + xSpeed * deltaTime);
             yPosition.set(yPosition.get() + ySpeed * deltaTime);
             ySpeed += gravity * deltaTime;
-            checkCollision();
+            checkCollision(levelCollidables);
         }
     }
-    public void checkCollision(/* listi af Collidables veit ekki núna type, né return type*/) {
+    public void checkCollision(List<Rectangle> levelCollidables) {
+        double radius = fxBubble.getRadius();
+        double realXPos = xPosition.get() + getLayoutX();
+        double realYPos = yPosition.get() + getLayoutY();
+        for(Rectangle rect : levelCollidables){
+
+            double leftOverlap = rect.getLayoutX() + rect.getWidth() - realXPos - radius;
+            boolean touchingLeft = leftOverlap < rect.getWidth() && leftOverlap > 0;
+            double rightOverlap = realXPos + radius - rect.getLayoutX();
+            boolean touchingRight = rightOverlap < rect.getWidth() && rightOverlap > 0;
+            double topOverlap = rect.getLayoutY() + rect.getHeight() - realYPos - radius;
+            boolean touchingTop = topOverlap < rect.getHeight() && topOverlap > 0;
+            double bottomOverlap = realYPos + radius - rect.getLayoutY();
+            boolean touchingBottom = bottomOverlap < rect.getHeight() && bottomOverlap > 0;
+
+            if(touchingLeft != touchingRight){
+                xSpeed *= -1;
+                if(touchingLeft) xPosition.set(xPosition.get() + leftOverlap);
+                else xPosition.set(xPosition.get() + rightOverlap);
+            }
+            if(touchingBottom != touchingTop){
+                if(touchingBottom){
+                    ySpeed = bounce;
+                    yPosition.set(yPosition.get() - bottomOverlap);
+                }
+                else{
+                    ySpeed *= -0.9;
+                    yPosition.set(yPosition.get() + topOverlap);
+                }
+            }
+        }
 
     }
     public void blowUp() {

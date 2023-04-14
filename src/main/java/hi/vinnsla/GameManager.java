@@ -1,11 +1,19 @@
 package hi.vinnsla;
 
 import hi.vidmot.Bubble;
+import hi.vidmot.Player;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 enum GameState{
     reset,
@@ -20,11 +28,18 @@ public class GameManager {
     private static double elapsedTime = 0;
     private static int elapsedSeconds = 0;
     private static double countdown;
-    private static double timer;
-    final private static int maxLives = 5;
+    final private static int maxLives = 2;
     private static int lives;
-
+    private static Player levelPlayer;
+    public static Player getPlayer(){
+        return levelPlayer;
+    }
+    private static List<Rectangle> levelCollidables;
     private static List<Bubble> levelBubbles;
+    private static double levelTimerMax;
+    private static double levelTimer;
+    private static Scene levelScene;
+
 
     public static GameState state;
 
@@ -68,10 +83,11 @@ public class GameManager {
                 else setState(GameState.ongoing);
                 break;
             case ongoing:
-                timer -= deltaTime;
+                levelTimer -= deltaTime;
                 for(Bubble bubble : levelBubbles)
-                    bubble.update(deltaTime);
-                if(timer <= 0)
+                    bubble.update(deltaTime, levelCollidables);
+                levelPlayer.update(deltaTime);
+                if(levelTimer <= 0)
                     setState(GameState.lose);
                 break;
         }
@@ -85,13 +101,16 @@ public class GameManager {
                 break;
             case starting:
                 countdown = 3;
-
+                levelPlayer.reset();
+                for(Bubble bubble: levelBubbles)
+                    bubble.reset();
                 System.out.println("Starting..");
+
                 state = GameState.starting;
                 break;
             case ongoing:
-                System.out.print("Round started");
-                timer = 5;
+                System.out.println("Round started");
+                levelTimer = levelTimerMax;
 
                 state = GameState.ongoing;
                 break;
@@ -108,5 +127,14 @@ public class GameManager {
 
     public static void setBubbles(List<Bubble> bubbles) {
         levelBubbles = bubbles;
+    }
+
+    public static void sendLevelInfo(List<Bubble> bubbles, double timer, List<Rectangle> collidables, Player player, Scene scene){
+        levelBubbles = bubbles;
+        levelTimerMax = timer;
+        levelCollidables = collidables;
+        levelPlayer = player;
+        levelScene = scene;
+        initManager();
     }
 }

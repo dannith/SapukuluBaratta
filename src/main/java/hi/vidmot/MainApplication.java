@@ -1,5 +1,6 @@
 package hi.vidmot;
 
+import hi.vinnsla.GameManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,6 +22,7 @@ private Image setIcon(){
         stage.setScene(scene);
         stage.getIcons().add(setIcon());
         stage.show();
+        GameManager.getPlayer().initKeys();
     }
 
     public static void main(String[] args) {
