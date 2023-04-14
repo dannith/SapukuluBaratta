@@ -35,16 +35,25 @@
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Button>
                   <Button fx:id="fxScoreBoardButton" mnemonicParsing="false" onAction="#onScoreBoard" prefHeight="90.0" prefWidth="300.0" styleClass="Buttons" stylesheets="@../../CSS/Stylesheet.css" text="ScoreBoard">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Button>
                   <Button fx:id="fxControlsButton" mnemonicParsing="false" onAction="#onControles" prefHeight="90.0" prefWidth="300.0" styleClass="Buttons" stylesheets="@../../CSS/Stylesheet.css" text="Controls">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Button>
                   <ToolBar prefHeight="90.0" prefWidth="300.0" styleClass="Buttons" stylesheets="@../../CSS/Stylesheet.css">
                      <items>
