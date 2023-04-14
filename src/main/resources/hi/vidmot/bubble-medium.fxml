@@ -1,0 +1,6 @@
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.layout.Pane?>
+
+<fx:root type="Pane" maxHeight="33.35" maxWidth="33.35" minHeight="33.35" minWidth="33.35" prefHeight="33.35" prefWidth="32.35" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <Circle fx:id="fxBubble" centerX="16.675" centerY="16.675" fill="RED" radius="25.0" />
+</fx:root>
