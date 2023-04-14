@@ -18,7 +18,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.media.Media;
 import javafx.util.Duration;
 
 
@@ -45,7 +44,6 @@ public class Controller implements Initializable{
     public ImageView fxmynd;
     @FXML
     public VBox fxmenus;
-
     @FXML
     public ControlsView fxControls;
     @FXML
@@ -90,7 +88,7 @@ public class Controller implements Initializable{
         Image mute = new Image(file2.toURI().toString());
 
 
-        if(onmute == false){
+        if(!onmute){
             fxmynd.setImage(mute);
             Hljod.mute();
             onmute = true;
