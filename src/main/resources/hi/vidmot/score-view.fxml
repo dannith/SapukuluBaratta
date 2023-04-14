@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<fx:root type="Pane" prefHeight="450.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="450.0" prefWidth="450.0" type="Pane" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ListView layoutX="103.0" layoutY="95.0" prefHeight="297.0" prefWidth="394.0" />
-      <Text layoutX="193.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ScoreBoard" wrappingWidth="214.80340576171875">
+      <ListView layoutX="87.0" layoutY="67.0" prefHeight="333.0" prefWidth="276.0" />
+      <Text layoutX="118.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ScoreBoard" wrappingWidth="214.80340576171875">
          <font>
             <Font size="40.0" />
          </font>

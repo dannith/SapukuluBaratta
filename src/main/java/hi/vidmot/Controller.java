@@ -12,12 +12,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
 import javafx.util.Duration;
 
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -31,26 +36,30 @@ public class Controller implements Initializable{
     @FXML
     public Button fxControlsButton;
     @FXML
-    public HBox fxContent;
+    public AnchorPane fxContent;
     @FXML
-    public AnchorPane fxAnchorRoot;
-
-    public boolean opid = false;
+    public HBox fxAnchorRoot;
     @FXML
     public Pane fxpane;
+    @FXML
+    public ImageView fxmynd;
+    @FXML
+    public VBox fxmenus;
+
     @FXML
     public ControlsView fxControls;
     @FXML
     public StigView fxStigview;
-    public boolean faraupp = false;
 
+
+    public boolean faraupp = false;
+    public boolean onmute = false;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Hljod.play();
 
-        // er hægt að setja þetta í annan klasa ?
         DoubleProperty xPosition = new SimpleDoubleProperty(0);
         xPosition.addListener((observable, oldValue, newValue) -> setBackgroundPositions(fxContent, xPosition.get()));
         Timeline timeline = new Timeline(
@@ -61,9 +70,7 @@ public class Controller implements Initializable{
     }
 
 
-
-
-    private void setBackgroundPositions(HBox fxContent, double xPosition) {
+    private void setBackgroundPositions(AnchorPane fxContent, double xPosition) {
         String style = "-fx-background-position: " +
                 "left " + xPosition/6 + "px bottom," +
                 "left " + xPosition/5 + "px bottom," +
@@ -76,24 +83,37 @@ public class Controller implements Initializable{
 
     @FXML
     public void onMuteButton(ActionEvent actionEvent) {
-        Hljod.mute();
+        File file1 = new File("src/main/resources/hi/Myndir/soundOn.png");
+        Image unmute = new Image(file1.toURI().toString());
+
+        File file2 = new File("src/main/resources/hi/Myndir/soundOff.png");
+        Image mute = new Image(file2.toURI().toString());
+
+
+        if(onmute == false){
+            fxmynd.setImage(mute);
+            Hljod.mute();
+            onmute = true;
+        }else{
+            fxmynd.setImage(unmute);
+            Hljod.unmute();
+            onmute = false;
+        }
     }
 
-    public void onSoundHandler(ActionEvent event) {
-        Hljod.unmute();
-    }
-
-    public void onPlay(ActionEvent event) {
-        //í leik
+    public void onPlay(ActionEvent event) throws IOException {
+        Millisena.lesa(this, fxContent, fxAnchorRoot, fxPlayButton, "level-one.fxml");
+        fxpane.setVisible(false);
+        fxmenus.setVisible(false);
     }
 
     public void onScoreBoard(ActionEvent event) {
         faraUpp(fxStigview);
     }
-
     public void onControles(ActionEvent event) {
         faraUpp(fxControls);
     }
+
 
     private void faraUpp(Pane klasi){
         if (!faraupp){
