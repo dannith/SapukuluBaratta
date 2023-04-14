@@ -1,9 +1,11 @@
 .Buttons{
-    -fx-background-color: Orange;
+    -fx-background-color: #F25C05;
     -fx-background-radius: 3px;
-    -fx-border-color: rgb(192, 192, 192);
+    -fx-border-color: Black;
     -fx-border-radius: 3px;
     -fx-border-width: 2px;
-    -fx-border-style: solid;
-    -fx-font-style:  italic;
+    -fx-border-style: Solid;
+    -fx-font-style: italic;
+    -fx-font-family: cursive;
+    -fx-text-fill: White;
 }

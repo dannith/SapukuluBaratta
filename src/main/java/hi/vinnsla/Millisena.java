@@ -11,13 +11,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
 import java.io.IOException;
 
 public class Millisena {
-    public static void lesa(Controller th, HBox parentContainer, AnchorPane anchorRoot, Button takki, String s) throws IOException {
+    public static void lesa(Controller th, AnchorPane parentContainer, HBox anchorRoot, Button takki, String s) throws IOException {
         try {
             Parent root = FXMLLoader.load(th.getClass().getResource(s));
             Scene scene = takki.getScene();
