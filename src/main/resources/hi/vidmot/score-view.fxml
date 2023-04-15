@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
-<fx:root prefHeight="450.0" prefWidth="450.0" type="Pane" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="450.0" prefWidth="450.0" type="Pane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ListView layoutX="87.0" layoutY="67.0" prefHeight="333.0" prefWidth="276.0" />
-      <Text layoutX="118.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ScoreBoard" wrappingWidth="214.80340576171875">
-         <font>
-            <Font size="40.0" />
-         </font>
-      </Text>
+      <ImageView fitHeight="50.0" fitWidth="200.0" layoutX="118.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Myndir/scoreboard.png" />
+         </image>
+      </ImageView>
    </children>
 </fx:root>

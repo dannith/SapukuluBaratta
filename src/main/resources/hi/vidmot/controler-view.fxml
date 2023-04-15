@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<fx:root prefHeight="450.0" prefWidth="450.0" type="Pane" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="450.0" prefWidth="450.0" type="Pane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Text layoutX="241.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Controls">
          <font>
@@ -26,9 +26,9 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="20.0" layoutY="200.0" mnemonicParsing="false" onAction="#onClickLeft" prefHeight="63.0" prefWidth="80.0">
+      <Button layoutX="26.0" layoutY="200.0" mnemonicParsing="false" onAction="#onClickLeft" prefHeight="66.0" prefWidth="74.0">
          <graphic>
-            <ImageView fitHeight="50.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="57.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Myndir/left.png" />
                </image>
@@ -44,7 +44,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="205.0" layoutY="199.0" mnemonicParsing="false" onAction="#onClickRight" prefHeight="48.0" prefWidth="46.0">
+      <Button layoutX="205.0" layoutY="199.0" mnemonicParsing="false" onAction="#onClickRight" prefHeight="66.0" prefWidth="74.0">
          <graphic>
             <ImageView fitHeight="57.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                <image>
