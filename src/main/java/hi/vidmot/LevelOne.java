@@ -4,15 +4,18 @@ import hi.vinnsla.GameManager;
 import hi.vinnsla.LevelInfo;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.shape.Rectangle;
 
+import java.math.BigDecimal;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class LevelOne implements LevelInfo, Initializable {
-
+    @FXML
+    public ProgressBar fxMyProgressBar;
     @FXML
     Bubble fxBubble1;
     @FXML
@@ -23,7 +26,7 @@ public class LevelOne implements LevelInfo, Initializable {
     List<Bubble> bubbles = new ArrayList<>();
     List<Rectangle> collidables = new ArrayList<>();
 
-    double levelTimer = 100; // sec per level
+    double levelTimer = 20; // sec per level
 
 
     @Override
@@ -45,7 +48,9 @@ public class LevelOne implements LevelInfo, Initializable {
         collidables.add(rect4);
         collidables.add(rect5);
         collidables.add(rect6);
-        GameManager.setBubbles(bubbles);
-        GameManager.sendLevelInfo(bubbles, 10, collidables, fxPlayer, fxPlayer.getScene());
+        //GameManager.setBubbles(bubbles);
+        GameManager.sendLevelInfo(bubbles, levelTimer, collidables, fxPlayer, fxPlayer.getScene(), fxMyProgressBar);
     }
+
+
 }
