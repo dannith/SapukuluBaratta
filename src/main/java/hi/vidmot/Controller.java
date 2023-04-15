@@ -112,6 +112,8 @@ public class Controller implements Initializable{
         GameManager.getPlayer().initKeys();
     }
 
+    //andri
+
     public void onScoreBoard(ActionEvent event) {
         if (ready){
             if (uppiControles){
