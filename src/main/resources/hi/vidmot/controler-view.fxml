@@ -5,42 +5,24 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<fx:root prefHeight="450.0" prefWidth="450.0" type="Pane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="450.0" prefWidth="399.0" type="Pane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fitHeight="450.0" fitWidth="450.0" pickOnBounds="true">
+      <ImageView fitHeight="450.0" fitWidth="399.0" pickOnBounds="true">
          <image>
             <Image url="@../Myndir/stjornuBakgrunnur.jpeg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="215.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="95.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Myndir/controls.png" />
          </image>
       </ImageView>
-      <Text fx:id="fxTexti" layoutX="169.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="261.66668701171875">
+      <Text fx:id="fxTexti" layoutX="66.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="261.66668701171875">
          <font>
             <Font size="25.0" />
          </font>
       </Text>
-      <Button layoutX="117.0" layoutY="200.0" mnemonicParsing="false" onAction="#onClickDown" prefHeight="48.0" prefWidth="46.0">
-         <graphic>
-            <ImageView fitHeight="57.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Myndir/down.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button layoutX="26.0" layoutY="200.0" mnemonicParsing="false" onAction="#onClickLeft" prefHeight="66.0" prefWidth="74.0">
-         <graphic>
-            <ImageView fitHeight="57.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Myndir/left.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button layoutX="117.0" layoutY="111.0" mnemonicParsing="false" onAction="#onClickUp" prefHeight="48.0" prefWidth="46.0">
+      <Button layoutX="160.0" layoutY="111.0" mnemonicParsing="false" onAction="#onClickUp" prefHeight="48.0" prefWidth="46.0">
          <graphic>
             <ImageView fitHeight="57.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -49,7 +31,25 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="205.0" layoutY="199.0" mnemonicParsing="false" onAction="#onClickRight" prefHeight="66.0" prefWidth="74.0">
+      <Button layoutX="69.0" layoutY="200.0" mnemonicParsing="false" onAction="#onClickLeft" prefHeight="66.0" prefWidth="74.0">
+         <graphic>
+            <ImageView fitHeight="57.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Myndir/left.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="160.0" layoutY="200.0" mnemonicParsing="false" onAction="#onClickDown" prefHeight="48.0" prefWidth="46.0">
+         <graphic>
+            <ImageView fitHeight="57.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Myndir/down.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="248.0" layoutY="199.0" mnemonicParsing="false" onAction="#onClickRight" prefHeight="66.0" prefWidth="74.0">
          <graphic>
             <ImageView fitHeight="57.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                <image>

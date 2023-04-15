@@ -4,18 +4,18 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root prefHeight="450.0" prefWidth="450.0" type="Pane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="450.0" prefWidth="399.0" type="Pane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fitHeight="450.0" fitWidth="450.0" pickOnBounds="true">
+      <ImageView fitHeight="450.0" fitWidth="399.0" pickOnBounds="true">
          <image>
             <Image url="@../Myndir/stjornuBakgrunnur.jpeg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="50.0" fitWidth="200.0" layoutX="118.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="70.0" fitWidth="220.0" layoutX="87.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Myndir/scoreboard.png" />
          </image>
       </ImageView>
-      <ListView layoutX="87.0" layoutY="67.0" prefHeight="333.0" prefWidth="276.0" />
+      <ListView layoutX="62.0" layoutY="67.0" prefHeight="333.0" prefWidth="276.0" />
    </children>
 </fx:root>
