@@ -44,7 +44,6 @@ public class LevelOne implements LevelInfo, Initializable {
         bubbles.add(fxBubble1);
         bubbles.add(fxBubble2);
         bubbles.add(fxBubble3);
-        //GameManager.setBubbles(bubbles);
         GameManager.sendLevelInfo(bubbles, xBounderies, yBounderies, levelTimer, collidables, fxPlayer, fxPlayer.getScene(), fxMyProgressBar);
     }
 

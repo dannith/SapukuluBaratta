@@ -33,11 +33,10 @@ public class Player extends Pane {
     private double xSpeed = 240;
 
     public void initKeys(){
-            inputKeys.put(KeyCode.W, false);
-            inputKeys.put(KeyCode.A, false);
-            inputKeys.put(KeyCode.S, false);
-            inputKeys.put(KeyCode.D, false);
             inputKeys.put(KeyCode.UP, false);
+            inputKeys.put(KeyCode.LEFT, false);
+            inputKeys.put(KeyCode.DOWN, false);
+            inputKeys.put(KeyCode.RIGHT, false);
 
             fxPlayer.getScene().setOnKeyPressed(new EventHandler<KeyEvent>() {
                 @Override
@@ -72,8 +71,8 @@ public class Player extends Pane {
     }
 
     public void update(double deltaTime, List<Bubble> bubbles) {
-        if(inputKeys.get(KeyCode.A) != inputKeys.get(KeyCode.D)){
-            if(inputKeys.get(KeyCode.A)) fxPlayer.setX(fxPlayer.getX() - xSpeed * deltaTime);
+        if(inputKeys.get(KeyCode.LEFT) != inputKeys.get(KeyCode.RIGHT)){
+            if(inputKeys.get(KeyCode.LEFT)) fxPlayer.setX(fxPlayer.getX() - xSpeed * deltaTime);
             else fxPlayer.setX(fxPlayer.getX() + xSpeed * deltaTime);
         }
         if(inputKeys.get(KeyCode.UP) && !hookOut){
@@ -138,4 +137,5 @@ public class Player extends Pane {
         }
         return false;
     }
+    //andri
 }
