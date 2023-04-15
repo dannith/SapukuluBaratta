@@ -124,6 +124,15 @@ public class Controller implements Initializable{
                 uppiScoreBoard=!uppiScoreBoard;
         }
     }
+    /*
+    public void uppfaeraStig(ActionEvent event){
+        LevelOne levelOne = new LevelOne();
+        if(levelOne.levelTimer > 0){
+
+        }
+    }
+
+     */
 
     public void onControles(ActionEvent event) {
         if (ready){
