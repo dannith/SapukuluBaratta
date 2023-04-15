@@ -7,11 +7,16 @@
 
 <fx:root prefHeight="450.0" prefWidth="450.0" type="Pane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text layoutX="241.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Controls">
-         <font>
-            <Font size="40.0" />
-         </font>
-      </Text>
+      <ImageView fitHeight="450.0" fitWidth="450.0" pickOnBounds="true">
+         <image>
+            <Image url="@../Myndir/stjornuBakgrunnur.jpeg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="215.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Myndir/controls.png" />
+         </image>
+      </ImageView>
       <Text fx:id="fxTexti" layoutX="169.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="261.66668701171875">
          <font>
             <Font size="25.0" />
