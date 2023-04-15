@@ -40,7 +40,7 @@ public class GameManager {
 
     public static GameState state;
 
-
+    //andri
     public static void initManager(){
         deltaTime = 0;
         lastTime = System.nanoTime();
@@ -48,6 +48,7 @@ public class GameManager {
     }
 
     private static void initGameLoop() {
+        init();
         KeyFrame k = new KeyFrame(Duration.millis(20),
                 e-> {
                     gameLoop();
@@ -55,7 +56,6 @@ public class GameManager {
         Timeline t = new Timeline(k);
         t.setCycleCount(Timeline.INDEFINITE);
         t.play();
-        init();
     }
 
     public static void init(){
