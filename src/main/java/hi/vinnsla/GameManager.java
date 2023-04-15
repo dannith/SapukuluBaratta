@@ -11,14 +11,9 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
+import java.util.HashMap;
 import java.util.List;
-
-enum GameState{
-    reset,
-    starting,
-    ongoing,
-    lose
-}
+import java.util.Map;
 
 public class GameManager {
     private static double deltaTime;
@@ -39,8 +34,11 @@ public class GameManager {
     private static ProgressBar levelProgressBar;
     private static DoubleProperty levelProgress;
     private static Scene levelScene;
-    public static GameState state;
+    private static double levelXBounderies;
+    private static double levelYBounderies;
 
+
+    public static GameState state;
 
 
     public static void initManager(){
@@ -84,9 +82,16 @@ public class GameManager {
             case ongoing:
                 levelTimer -= deltaTime;
                 levelProgress.set(levelTimer/levelTimerMax);
-                for(Bubble bubble : levelBubbles)
-                    bubble.update(deltaTime, levelCollidables);
-                levelPlayer.update(deltaTime);
+                boolean gameWon = true;
+                for(Bubble bubble : levelBubbles) {
+                    if(bubble.isEnabled()) gameWon = false;
+                    bubble.update(deltaTime, levelXBounderies, levelYBounderies);
+                }
+                if(gameWon){
+                    setState(GameState.reset);
+                    break;
+                }
+                levelPlayer.update(deltaTime, levelBubbles);
                 if(levelTimer <= 0)
                     setState(GameState.lose);
                 break;
@@ -130,13 +135,16 @@ public class GameManager {
         levelBubbles = bubbles;
     }
 
-    public static void sendLevelInfo(List<Bubble> bubbles, double timer, List<Rectangle> collidables, Player player, Scene scene, ProgressBar fxMyProgressBar){
+    public static void sendLevelInfo(List<Bubble> bubbles,double xBounderies, double yBounderies, double timer,
+                                     List<Rectangle> collidables, Player player, Scene scene, ProgressBar progressBar){
         levelBubbles = bubbles;
         levelTimerMax = timer;
         levelCollidables = collidables;
         levelPlayer = player;
         levelScene = scene;
-        levelProgressBar = fxMyProgressBar;
+        levelXBounderies = xBounderies;
+        levelYBounderies = yBounderies;
+        levelProgressBar = progressBar;
 
         levelProgressBar.progressProperty();
         levelProgress = new SimpleDoubleProperty(1);
