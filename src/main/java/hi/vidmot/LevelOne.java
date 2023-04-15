@@ -17,16 +17,16 @@ public class LevelOne implements LevelInfo, Initializable {
     @FXML
     public ProgressBar fxMyProgressBar;
     @FXML
-    Bubble fxBubble1;
+    Bubble fxBubble1, fxBubble2, fxBubble3;
     @FXML
     Player fxPlayer;
-    @FXML
-    public Rectangle rect1, rect2, rect3, rect4, rect5, rect6;
 
     List<Bubble> bubbles = new ArrayList<>();
     List<Rectangle> collidables = new ArrayList<>();
 
-    double levelTimer = 20; // sec per level
+    final double levelTimer = 20; // sec per level
+    final double xBounderies = 800;
+    final double yBounderies = 450;
 
 
     @Override
@@ -42,14 +42,10 @@ public class LevelOne implements LevelInfo, Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         bubbles.add(fxBubble1);
-        collidables.add(rect1);
-        collidables.add(rect2);
-        collidables.add(rect3);
-        collidables.add(rect4);
-        collidables.add(rect5);
-        collidables.add(rect6);
+        bubbles.add(fxBubble2);
+        bubbles.add(fxBubble3);
         //GameManager.setBubbles(bubbles);
-        GameManager.sendLevelInfo(bubbles, levelTimer, collidables, fxPlayer, fxPlayer.getScene(), fxMyProgressBar);
+        GameManager.sendLevelInfo(bubbles, xBounderies, yBounderies, levelTimer, collidables, fxPlayer, fxPlayer.getScene(), fxMyProgressBar);
     }
 
 

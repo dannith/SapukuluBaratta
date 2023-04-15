@@ -9,6 +9,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 import java.io.IOException;
+import java.util.IllegalFormatCodePointException;
 import java.util.List;
 
 /**
@@ -19,7 +20,7 @@ public class Bubble extends Pane {
     public Circle fxBubble;
     private boolean enabled;
     private double radius;
-    private double gravity = 98;
+    final private double gravity = 980;
     private double bounce;  // nýr hraði kúlu eftir hún rekst á gólf/loft
     private double xStartPos;
     private double yStartPos;
@@ -28,8 +29,11 @@ public class Bubble extends Pane {
     static final double OUT_OF_BOUNDS = 20000; // Hvergi sjáanlegt á skjá.
     private double xStartSpeed;
     private double yStartSpeed;
+
+    public String yoyoyo;
     private double xSpeed;    // láréttur hraði kúlu
     private double ySpeed;    // lóðréttur hraði kúlu
+
 
 
     public Bubble(){
@@ -45,11 +49,11 @@ public class Bubble extends Pane {
     }
 
     public void init() {
-        xStartSpeed = 200;
+        xStartSpeed = 150;
         yStartSpeed = 0;
         xStartPos = 0;
         yStartPos = 0;
-        bounce = 500;
+        bounce = -600;
         xPosition = new SimpleDoubleProperty(xStartPos);
         yPosition = new SimpleDoubleProperty(yStartPos);
         fxBubble.centerXProperty().bind(xPosition);
@@ -64,56 +68,44 @@ public class Bubble extends Pane {
         xSpeed = xStartSpeed;
         ySpeed = yStartSpeed;
     }
-    public void update(double deltaTime, List<Rectangle> levelCollidables){
+    public void update(double deltaTime, double xBounderies, double yBounderies){
         if(enabled){
             xPosition.set(xPosition.get() + xSpeed * deltaTime);
             yPosition.set(yPosition.get() + ySpeed * deltaTime);
             ySpeed += gravity * deltaTime;
-            checkCollision(levelCollidables);
+            checkCollision(xBounderies, yBounderies);
         }
     }
-    public void checkCollision(List<Rectangle> levelCollidables) {
-        double radius = fxBubble.getRadius();
-        double realXPos = xPosition.get() + getLayoutX();
-        double realYPos = yPosition.get() + getLayoutY();
-        for(Rectangle rect : levelCollidables){
-
-            double leftOverlap = rect.getLayoutX() + rect.getWidth() - realXPos - radius;
-            boolean touchingLeft = leftOverlap < rect.getWidth() && leftOverlap > 0;
-            double rightOverlap = realXPos + radius - rect.getLayoutX();
-            boolean touchingRight = rightOverlap < rect.getWidth() && rightOverlap > 0;
-            double topOverlap = rect.getLayoutY() + rect.getHeight() - realYPos - radius;
-            boolean touchingTop = topOverlap < rect.getHeight() && topOverlap > 0;
-            double bottomOverlap = realYPos + radius - rect.getLayoutY();
-            boolean touchingBottom = bottomOverlap < rect.getHeight() && bottomOverlap > 0;
-
-            if(touchingLeft != touchingRight){
-                xSpeed *= -1;
-                if(touchingLeft) xPosition.set(xPosition.get() + leftOverlap);
-                else xPosition.set(xPosition.get() + rightOverlap);
-            }
-            if(touchingBottom != touchingTop){
-                if(touchingBottom){
-                    ySpeed = bounce;
-                    yPosition.set(yPosition.get() - bottomOverlap);
-                }
-                else{
-                    ySpeed *= -0.9;
-                    yPosition.set(yPosition.get() + topOverlap);
-                }
-            }
+    public void checkCollision(double xBounderies, double yBounderies) {
+        double xPos = fxBubble.getCenterX() + getLayoutX();
+        double yPos = fxBubble.getCenterY() + getLayoutY();
+        if((xPos + fxBubble.getRadius() >= xBounderies && xSpeed > 0) ||
+                (xPos - fxBubble.getRadius() < 0 && xSpeed < 0) ){
+            xSpeed *= -1;
         }
-
+        if(yPos + fxBubble.getRadius() >= yBounderies && ySpeed > 0){
+            ySpeed = bounce;
+        }
     }
+
+    public double getWorldCenterX(){
+        return getLayoutX() + fxBubble.getCenterX();
+    }
+
+    public double getWorldCenterY(){
+        return getLayoutY() + fxBubble.getCenterY();
+    }
+
     public void blowUp() {
-
+        disable();
     }  // Eftir að kúla skemmist, hverfur (og býr til 2 nýjar kúlur ef á við)
     protected void disable(){
         enabled = false;
         xPosition.set(OUT_OF_BOUNDS);
         yPosition.set(OUT_OF_BOUNDS);
     }
-    protected void handleCollision() {
 
-    }  // Uppfæra stefnu kúlu ef hún klessir á.
+    public boolean isEnabled(){
+        return enabled;
+    }
 }
