@@ -12,7 +12,6 @@ import java.io.IOException;
 public class MainApplication extends Application {
 private Image setIcon(){
     return new Image("bubble.png");
-
 }
     @Override
     public void start(Stage stage) throws IOException {
@@ -22,10 +21,10 @@ private Image setIcon(){
         stage.setScene(scene);
         stage.getIcons().add(setIcon());
         stage.show();
-       // GameManager.getPlayer().initKeys();
     }
 
     public static void main(String[] args) {
         launch();
     }
 }
+
