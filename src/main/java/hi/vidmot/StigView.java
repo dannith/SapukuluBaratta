@@ -16,4 +16,6 @@ public class StigView extends Pane {
             throw new RuntimeException(exception);
         }
     }
+
+
 }

@@ -22,7 +22,6 @@ private Image setIcon(){
         stage.setScene(scene);
         stage.getIcons().add(setIcon());
         stage.show();
-        GameManager.getPlayer().initKeys();
     }
 
     public static void main(String[] args) {

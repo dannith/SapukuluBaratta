@@ -48,8 +48,11 @@ public class Controller implements Initializable{
     @FXML
     public StigView fxStigview;
 
+    private boolean uppiControles;
+    private boolean uppiScoreBoard;
 
-    public boolean faraupp = false;
+
+    public boolean ready = true;
     public boolean onmute = false;
 
 
@@ -59,6 +62,8 @@ public class Controller implements Initializable{
 
         fxControls.setTranslateY(500);
         fxStigview.setTranslateY(500);
+        uppiControles = false;
+        uppiScoreBoard =false;
 
         DoubleProperty xPosition = new SimpleDoubleProperty(0);
         xPosition.addListener((observable, oldValue, newValue) -> setBackgroundPositions(fxContent, xPosition.get()));
@@ -104,26 +109,43 @@ public class Controller implements Initializable{
         Millisena.lesa(this, fxContent, fxAnchorRoot, fxPlayButton, "level-one.fxml");
         fxpane.setVisible(false);
         fxmenus.setVisible(false);
+        GameManager.getPlayer().initKeys();
     }
 
     public void onScoreBoard(ActionEvent event) {
-        faraUpp(fxStigview);
+        if (ready){
+            if (uppiControles){
+                faraUpp(fxControls);
+                uppiControles = false;
+            }
+                faraUpp(fxStigview);
+                uppiScoreBoard=!uppiScoreBoard;
+        }
     }
+
     public void onControles(ActionEvent event) {
-        faraUpp(fxControls);
+        if (ready){
+            if (uppiScoreBoard){
+                faraUpp(fxStigview);
+                uppiScoreBoard = false;
+            }
+            faraUpp(fxControls);
+            uppiControles=!uppiControles;
+        }
     }
 
     private void faraUpp(Pane klasi){
-        Timeline timeline= new Timeline();
-        KeyValue kv = new KeyValue(klasi.translateYProperty(),klasi.getTranslateY()-500, Interpolator.EASE_IN);
-        KeyFrame kf = new KeyFrame(Duration.seconds(2),kv);
+        ready = false;
+        Timeline timeline = new Timeline();
+        KeyValue kv = new KeyValue(klasi.translateYProperty(), klasi.getTranslateY() - 500, Interpolator.EASE_IN);
+        KeyFrame kf = new KeyFrame(Duration.seconds(2), kv);
         timeline.getKeyFrames().add(kf);
         timeline.setOnFinished(event1 -> {
-            if (klasi.getTranslateY()<0){
+            ready = true;
+            if (klasi.getTranslateY() < 0) {
                 klasi.setTranslateY(500);
             }
         });
         timeline.play();
     }
-
 }
