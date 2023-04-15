@@ -23,13 +23,16 @@
                </children></Pane>
             <VBox fx:id="fxmenus" prefHeight="500.0" prefWidth="295.0">
                <children>
-                  <Button layoutX="20.0" layoutY="45.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="300.0" styleClass="Buttons" stylesheets="@../../CSS/Stylesheet.css" text="BubbleStruggle">
+                  <Button layoutX="20.0" layoutY="45.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="300.0" styleClass="Buttons" stylesheets="@../../CSS/Stylesheet.css">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
                      <font>
                         <Font size="27.0" />
                      </font>
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
                   </Button>
                   <Button fx:id="fxPlayButton" mnemonicParsing="false" onAction="#onPlay" prefHeight="90.0" prefWidth="300.0" styleClass="Buttons" stylesheets="@../../CSS/Stylesheet.css" text="Play">
                      <VBox.margin>
