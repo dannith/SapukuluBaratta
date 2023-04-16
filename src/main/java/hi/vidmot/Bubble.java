@@ -5,6 +5,7 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
@@ -45,15 +46,40 @@ public class Bubble extends Pane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-        init();
     }
 
     public void init() {
-        xStartSpeed = 150;
-        yStartSpeed = 0;
+        if(getId() != null){
+            switch(getId().substring(0,1)){
+                case "l":
+                    fxBubble.setRadius(35);
+                    fxBubble.setFill(Color.RED);
+                    bounce = -600;
+                    break;
+                case "m":
+                    fxBubble.setRadius(25);
+                    fxBubble.setFill(Color.LIGHTGREEN);
+                    bounce = -450;
+                    break;
+                case "s":
+                    fxBubble.setRadius(10);
+                    fxBubble.setFill(Color.LIGHTCORAL);
+                    bounce = -360;
+                    break;
+                default:
+                    System.out.println("MISSING ID ON: "+this);
+                    break;
+
+            }
+            if(getId().substring(1,2).equals("r")) xStartSpeed = -150;
+            else xStartSpeed = 150;
+            if(getId().substring(1,2).equals("b")) yStartSpeed = bounce;
+            else yStartSpeed = 0;
+        } else{
+            System.out.println("MISSING ID ON: "+this);
+        }
         xStartPos = 0;
         yStartPos = 0;
-        bounce = -600;
         xPosition = new SimpleDoubleProperty(xStartPos);
         yPosition = new SimpleDoubleProperty(yStartPos);
         fxBubble.centerXProperty().bind(xPosition);

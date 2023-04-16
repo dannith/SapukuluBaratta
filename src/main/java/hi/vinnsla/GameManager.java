@@ -29,6 +29,7 @@ public class GameManager {
     }
     private static List<Rectangle> levelCollidables;
     private static List<Bubble> levelBubbles;
+    private static List<Bubble> levelBubblesSpawned;
     private static double levelTimerMax;
     private static double levelTimer;
     private static ProgressBar levelProgressBar;
@@ -59,6 +60,8 @@ public class GameManager {
     }
 
     public static void init(){
+        for(Bubble bubble : levelBubbles)
+            bubble.init();
         setState(GameState.reset);
     }
 
@@ -131,8 +134,16 @@ public class GameManager {
         }
     }
 
-    public static void setBubbles(List<Bubble> bubbles) {
-        levelBubbles = bubbles;
+    public static void spawnBubbles(double x, double y, String size){
+        switch(size){
+            case "large":
+
+                break;
+            case "medium":
+                break;
+            case "small":
+                break;
+        }
     }
 
     public static void sendLevelInfo(List<Bubble> bubbles,double xBounderies, double yBounderies, double timer,
