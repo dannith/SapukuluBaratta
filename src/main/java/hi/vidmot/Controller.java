@@ -48,17 +48,16 @@ public class Controller implements Initializable{
     @FXML
     public StigView fxStigview;
 
+
     private boolean uppiControles;
     private boolean uppiScoreBoard;
-
-
     public boolean ready = true;
     public boolean onmute = false;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //Hljod.play();
+        Hljod.main();
 
         fxControls.setTranslateY(500);
         fxStigview.setTranslateY(500);
@@ -89,22 +88,21 @@ public class Controller implements Initializable{
     public void onMuteButton(ActionEvent actionEvent) {
         File file1 = new File("src/main/resources/hi/Myndir/soundOn.png");
         Image unmute = new Image(file1.toURI().toString());
-
         File file2 = new File("src/main/resources/hi/Myndir/soundOff.png");
         Image mute = new Image(file2.toURI().toString());
 
-
         if(!onmute){
             fxmynd.setImage(mute);
-            Hljod.mute();
+            Hljod.mainMute();
             onmute = true;
         }else{
             fxmynd.setImage(unmute);
-            Hljod.unmute();
+            Hljod.mainunMute();
             onmute = false;
         }
     }
 
+    @FXML
     public void onPlay(ActionEvent event) throws IOException {
         Millisena.lesa(this, fxContent, fxAnchorRoot, fxPlayButton, "level-one.fxml");
         fxpane.setVisible(false);
@@ -112,8 +110,7 @@ public class Controller implements Initializable{
         //GameManager.getPlayer().initKeys();
     }
 
-    //andri
-
+    @FXML
     public void onScoreBoard(ActionEvent event) {
         if (ready){
             if (uppiControles){
@@ -125,6 +122,7 @@ public class Controller implements Initializable{
         }
     }
 
+    @FXML
     public void onControles(ActionEvent event) {
         if (ready){
             if (uppiScoreBoard){

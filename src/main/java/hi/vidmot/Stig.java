@@ -7,7 +7,6 @@ public class Stig {
     private LevelOne levelOne;
     private GameState gameState;
     private Bubble bubble;
-
     private double stig;
 
 
@@ -34,6 +33,4 @@ public class Stig {
         }
         return stig;
     }
-
-
 }
