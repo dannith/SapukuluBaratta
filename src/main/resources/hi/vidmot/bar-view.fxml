@@ -10,12 +10,12 @@
         <Image url="@../Myndir/lifeIcon.png" />
     </ImageView>
 
-    <Label fx:id="livesLeftLabel" layoutX="109.0" layoutY="10" prefHeight="30" prefWidth="56.0" text="2" textAlignment="CENTER">
+    <Label fx:id="fxLivesLeftLabel" layoutX="109.0" layoutY="10" prefHeight="30" prefWidth="56.0" text="2" textAlignment="CENTER">
       <font>
          <Font size="20.0" />
       </font></Label>
     <ProgressBar fx:id="fxMyProgressBar" layoutX="186.0" layoutY="10.0" prefHeight="30.0" prefWidth="600.0" progress="0" rotate="180.0" styleClass="ProgressBar" stylesheets="@../../CSS/Leikur.css" />
-    <Label fx:id="fxStig" alignment="CENTER" contentDisplay="CENTER" layoutX="21.0" layoutY="10.0" prefHeight="30.0" prefWidth="50.0" text="0">
+    <Label fx:id="fxStigLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="21.0" layoutY="10.0" prefHeight="30.0" prefWidth="50.0" text="0">
         <font>
             <Font size="20.0" />
         </font>
