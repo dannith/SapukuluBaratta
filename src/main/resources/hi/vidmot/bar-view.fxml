@@ -7,12 +7,13 @@
 
 <fx:root prefHeight="50.0" prefWidth="800.0" type="Pane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
     <ImageView fitHeight="30.0" fitWidth="50.0" layoutX="71.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@../Myndir/lifeIcon.png"/>
+        <Image url="@../Myndir/lifeIcon.png" />
     </ImageView>
 
-    <Label fx:id="livesLeftLabel" layoutX="109.0" layoutY="10" prefHeight="30" prefWidth="56.0" text="Líf Eftir: 2">
-
-    </Label>
+    <Label fx:id="livesLeftLabel" layoutX="109.0" layoutY="10" prefHeight="30" prefWidth="56.0" text="2" textAlignment="CENTER">
+      <font>
+         <Font size="20.0" />
+      </font></Label>
     <ProgressBar fx:id="fxMyProgressBar" layoutX="186.0" layoutY="10.0" prefHeight="30.0" prefWidth="600.0" progress="0" rotate="180.0" styleClass="ProgressBar" stylesheets="@../../CSS/Leikur.css" />
     <Label fx:id="fxStig" alignment="CENTER" contentDisplay="CENTER" layoutX="21.0" layoutY="10.0" prefHeight="30.0" prefWidth="50.0" text="0">
         <font>

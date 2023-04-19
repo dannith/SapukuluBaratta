@@ -16,7 +16,6 @@ import java.util.ResourceBundle;
 public class LevelOne implements LevelInfo, Initializable {
     @FXML
     public ProgressBar fxMyProgressBar;
-    public Label fxStig;
     @FXML
     Bubble fxBubble1, fxBubble2, fxBubble3;
     @FXML
