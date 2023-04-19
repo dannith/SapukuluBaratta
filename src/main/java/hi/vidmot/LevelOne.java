@@ -4,10 +4,10 @@ import hi.vinnsla.GameManager;
 import hi.vinnsla.LevelInfo;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.shape.Rectangle;
 
-import java.math.BigDecimal;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +16,7 @@ import java.util.ResourceBundle;
 public class LevelOne implements LevelInfo, Initializable {
     @FXML
     public ProgressBar fxMyProgressBar;
+    public Label fxStig;
     @FXML
     Bubble fxBubble1, fxBubble2, fxBubble3;
     @FXML
@@ -38,7 +39,6 @@ public class LevelOne implements LevelInfo, Initializable {
     public double GetTimer() {
         return levelTimer;
     }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         bubbles.add(fxBubble1);

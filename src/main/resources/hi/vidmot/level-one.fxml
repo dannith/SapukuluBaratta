@@ -12,11 +12,4 @@
     <Bubble fx:id="fxBubble2"  id="ml" layoutX="300.0" layoutY="200.0" prefHeight="0.0" prefWidth="0.0" />
     <Bubble fx:id="fxBubble3" id="sr" layoutX="500.0" layoutY="100.0" prefHeight="0.0" prefWidth="0.0" />
    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="40.0" layoutY="450.0" stroke="BLACK" strokeType="INSIDE" width="800.0" />
-
-   <ProgressBar fx:id="fxMyProgressBar" layoutX="141.0" layoutY="455.0" prefHeight="30.0" prefWidth="645.0" progress="0" rotate="180.0" styleClass="ProgressBar" stylesheets="@../../CSS/Leikur.css" />
-   <Label fx:id="fxStig" alignment="CENTER" contentDisplay="CENTER" layoutX="2.0" layoutY="455.0" prefHeight="30.0" prefWidth="113.0" text="0">
-      <font>
-         <Font size="20.0" />
-      </font>
-   </Label>
 </Pane>

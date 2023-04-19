@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<fx:root prefHeight="50.0" prefWidth="800.0" type="Pane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <ImageView fitHeight="30.0" fitWidth="50.0" layoutX="60.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" image="@../Myndir/lifeIcon.png"/>
+    <Label fx:id="livesLeftLabel" layoutX="115" layoutY="10" pickOnBounds="true" prefHeight="30" prefWidth="50" text="0">
+
+    </Label>
+    <ProgressBar fx:id="fxMyProgressBar" layoutX="186.0" layoutY="10.0" prefHeight="30.0" prefWidth="600.0" progress="0" rotate="180.0" styleClass="ProgressBar" stylesheets="@../../CSS/Leikur.css" />
+    <Label fx:id="fxStig" alignment="CENTER" contentDisplay="CENTER" layoutX="2.0" layoutY="10.0" prefHeight="30.0" prefWidth="50.0" text="0">
+        <font>
+            <Font size="20.0" />
+        </font>
+    </Label>
+</fx:root>

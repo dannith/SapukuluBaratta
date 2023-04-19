@@ -6,21 +6,31 @@ import hi.vinnsla.GameState;
 public class Stig {
     private LevelOne levelOne;
     private GameState gameState;
+    private Bubble bubble;
 
-    private GameManager gameManager;
-    private double Stig;
+    private double stig;
+
+
+    public double getStig() {
+        setStig(timaBonus() + kuluStig());
+        return stig;
+    }
 
     public void setStig(double stig) {
-        Stig = stig;
-    }
-    public void getStig(double stig){
-
+        this.stig = stig;
     }
 
-    public double timaBonus(){
-        double stig = 0.0;
-        if((gameState != GameState.ongoing && levelOne.levelTimer>0)) {
-            stig = levelOne.levelTimer;
+    public double timaBonus() {
+        stig = 0.0;
+        if ((gameState != GameState.ongoing && levelOne.levelTimer > 0)) {
+            stig += levelOne.levelTimer;
+        }
+        return stig;
+    }
+
+    public double kuluStig() {
+        while (bubble.isDisabled()) {
+            stig += 50;
         }
         return stig;
     }

@@ -17,6 +17,7 @@
       <element id="library" level="project" name="Maven: org.openjfx:javafx-base:win:19" />
       <element id="library" level="project" name="Maven: org.openjfx:javafx-graphics:win:19" />
       <element id="library" level="project" name="Maven: org.openjfx:javafx-graphics:19" />
+      <element id="module-output" name="vidmot" />
     </root>
   </artifact>
 </component>
