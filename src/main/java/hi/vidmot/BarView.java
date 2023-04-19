@@ -9,7 +9,6 @@ import javafx.scene.layout.Pane;
 import java.io.IOException;
 
 public class BarView extends Pane {
-
     public BarView(){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("bar-view.fxml"));
         fxmlLoader.setRoot(this);
