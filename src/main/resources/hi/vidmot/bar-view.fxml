@@ -6,7 +6,12 @@
 <?import javafx.scene.text.*?>
 
 <fx:root prefHeight="50.0" prefWidth="800.0" type="Pane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
-   <ImageView fitHeight="30.0" fitWidth="50.0" layoutX="60.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" image="@../Myndir/lifeIcon.png"/>
+   <ImageView fitHeight="30.0" fitWidth="50.0" layoutX="60.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+       <image>
+           <Image url="@../Myndir/lifeIcon.png" />
+       </image>
+   </ImageView>
+
     <Label fx:id="livesLeftLabel" layoutX="115" layoutY="10" prefHeight="30" prefWidth="50" text="0">
 
     </Label>
