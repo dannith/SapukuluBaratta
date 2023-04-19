@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 
 import java.net.URL;
@@ -13,38 +14,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class LevelOne implements LevelInfo, Initializable {
+public class LevelOne implements Initializable {
     @FXML
-    public ProgressBar fxMyProgressBar;
+    Pane fxBubbles;
     @FXML
-    Bubble fxBubble1, fxBubble2, fxBubble3;
+    Pane fxExtraBubbles;
     @FXML
     Player fxPlayer;
-
-    List<Bubble> bubbles = new ArrayList<>();
-    List<Rectangle> collidables = new ArrayList<>();
-
+    @FXML
+    BarView fxBarView;
     final double levelTimer = 20; // sec per level
     final double xBounderies = 800;
     final double yBounderies = 450;
-
-
-    @Override
-    public List<Bubble> GetBubbles() {
-        return bubbles;
-    }
-
-    @Override
-    public double GetTimer() {
-        return levelTimer;
-    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        bubbles.add(fxBubble1);
-        bubbles.add(fxBubble2);
-        bubbles.add(fxBubble3);
-        GameManager.sendLevelInfo(bubbles, xBounderies, yBounderies, levelTimer, collidables, fxPlayer, fxPlayer.getScene(), fxMyProgressBar);
+        GameManager.sendLevelInfo(fxPlayer, fxBubbles, fxExtraBubbles, xBounderies, yBounderies, levelTimer, fxBarView);
     }
-
-
 }

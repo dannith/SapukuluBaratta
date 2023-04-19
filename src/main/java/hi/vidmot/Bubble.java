@@ -48,6 +48,11 @@ public class Bubble extends Pane {
         }
     }
 
+    public Bubble(String id){
+        this();
+        setId(id);
+    }
+
     public void init() {
         if(getId() != null){
             switch(getId().substring(0,1)){

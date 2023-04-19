@@ -4,6 +4,6 @@
 <?import javafx.scene.shape.*?>
 
 <fx:root prefHeight="0.0" prefWidth="0.0" type="Pane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
-    <Rectangle fx:id="fxHook" layoutX="-3.0" fill="GRAY" layoutY="-55.0" height="800.0" width="6.0" />
+    <Rectangle fx:id="fxHook" height="800.0" layoutX="-3.0" layoutY="-55.0" width="6.0" />
     <Rectangle fx:id="fxPlayer" height="45.0" layoutX="-10.0" layoutY="-45.0" width="20.0" />
 </fx:root>

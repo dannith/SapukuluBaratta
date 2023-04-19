@@ -1,5 +1,6 @@
 package hi.vinnsla;
 
+import hi.vidmot.BarView;
 import hi.vidmot.Bubble;
 import hi.vidmot.Player;
 import javafx.animation.KeyFrame;
@@ -8,9 +9,11 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.scene.Scene;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,14 +30,13 @@ public class GameManager {
     public static Player getPlayer(){
         return levelPlayer;
     }
-    private static List<Rectangle> levelCollidables;
     private static List<Bubble> levelBubbles;
     private static List<Bubble> levelBubblesSpawned;
+    private static Pane levelExtraBubbles;
     private static double levelTimerMax;
     private static double levelTimer;
     private static ProgressBar levelProgressBar;
     private static DoubleProperty levelProgress;
-    private static Scene levelScene;
     private static double levelXBounderies;
     private static double levelYBounderies;
 
@@ -45,6 +47,7 @@ public class GameManager {
     public static void initManager(){
         deltaTime = 0;
         lastTime = System.nanoTime();
+        levelPlayer.initKeys();
         initGameLoop();
     }
 
@@ -60,6 +63,8 @@ public class GameManager {
     }
 
     public static void init(){
+        levelBubblesSpawned.clear();
+        levelExtraBubbles.getChildren().clear();
         for(Bubble bubble : levelBubbles)
             bubble.init();
         setState(GameState.reset);
@@ -134,25 +139,39 @@ public class GameManager {
         }
     }
 
-    public static void spawnBubbles(double x, double y, String size){
-        switch(size){
-            case "large":
-
-                break;
-            case "medium":
-                break;
-            case "small":
-                break;
-        }
+    public static void spawnBubble(double x, double y, String id){
+        Bubble bubble = new Bubble(id);
+        bubble.setLayoutX(x);
+        bubble.setLayoutY(y);
+        levelExtraBubbles.getChildren().add(bubble);
     }
 
+    public static void sendLevelInfo(Player player, Pane bubbles, Pane extraBubbles, double xBounderies, double yBounderies, double timer, BarView barView){
+        levelPlayer = player;
+        levelBubbles = new ArrayList<Bubble>();
+        for(var bubble : bubbles.getChildren()){
+            levelBubbles.add((Bubble) bubble);
+        }
+        levelExtraBubbles = extraBubbles;
+        levelXBounderies = xBounderies;
+        levelYBounderies = yBounderies;
+        levelTimerMax = timer;
+
+        levelProgressBar = barView.getFxMyProgressbar();
+        levelProgressBar.progressProperty();
+        levelProgress = new SimpleDoubleProperty(1);
+        levelProgressBar.progressProperty().bind(levelProgress);
+
+        initManager();
+    }
+
+    /*
     public static void sendLevelInfo(List<Bubble> bubbles,double xBounderies, double yBounderies, double timer,
                                      List<Rectangle> collidables, Player player, Scene scene, ProgressBar progressBar){
         levelBubbles = bubbles;
         levelTimerMax = timer;
         levelCollidables = collidables;
         levelPlayer = player;
-        levelScene = scene;
         levelXBounderies = xBounderies;
         levelYBounderies = yBounderies;
         levelProgressBar = progressBar;
@@ -164,4 +183,5 @@ public class GameManager {
 
         initManager();
     }
+    */
 }

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import hi.vidmot.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
 
-<Pane prefHeight="489.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.vidmot.LevelOne">
+<Pane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.vidmot.LevelOne">
     <Player fx:id="fxPlayer" layoutX="400.0" layoutY="450.0" />
-    <Bubble fx:id="fxBubble1" id="lr" layoutX="50.0" layoutY="100.0" prefHeight="0.0" prefWidth="0.0" />
-    <Bubble fx:id="fxBubble2"  id="ml" layoutX="300.0" layoutY="200.0" prefHeight="0.0" prefWidth="0.0" />
-    <Bubble fx:id="fxBubble3" id="sr" layoutX="500.0" layoutY="100.0" prefHeight="0.0" prefWidth="0.0" />
-   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="40.0" layoutY="450.0" stroke="BLACK" strokeType="INSIDE" width="800.0" />
+    <Pane fx:id="fxBubbles">
+        <Bubble id="lr" layoutX="50.0" layoutY="100.0" />
+        <Bubble id="ml" layoutX="300.0" layoutY="200.0" />
+        <Bubble id="sr" layoutX="500.0" layoutY="100.0" />
+    </Pane>
+    <Pane fx:id="fxExtraBubbles" />
+    <BarView fx:id="fxBarView" layoutY="450.0" />
 </Pane>

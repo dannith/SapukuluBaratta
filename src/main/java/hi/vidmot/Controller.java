@@ -58,7 +58,7 @@ public class Controller implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Hljod.play();
+        //Hljod.play();
 
         fxControls.setTranslateY(500);
         fxStigview.setTranslateY(500);
@@ -109,7 +109,7 @@ public class Controller implements Initializable{
         Millisena.lesa(this, fxContent, fxAnchorRoot, fxPlayButton, "level-one.fxml");
         fxpane.setVisible(false);
         fxmenus.setVisible(false);
-        GameManager.getPlayer().initKeys();
+        //GameManager.getPlayer().initKeys();
     }
 
     //andri
@@ -124,15 +124,6 @@ public class Controller implements Initializable{
                 uppiScoreBoard=!uppiScoreBoard;
         }
     }
-    /*
-    public void uppfaeraStig(ActionEvent event){
-        LevelOne levelOne = new LevelOne();
-        if(levelOne.levelTimer > 0){
-
-        }
-    }
-
-     */
 
     public void onControles(ActionEvent event) {
         if (ready){
