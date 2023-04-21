@@ -1,5 +1,7 @@
 package hi.vidmot;
 
+import hi.vidmot.Bubble;
+import hi.vidmot.LevelOne;
 import hi.vinnsla.GameManager;
 import hi.vinnsla.GameState;
 

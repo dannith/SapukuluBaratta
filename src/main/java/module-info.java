@@ -6,4 +6,6 @@ module hi.vidmot {
 
     opens hi.vidmot to javafx.fxml;
     exports hi.vidmot;
+    exports hi.vinnsla;
+    opens hi.vinnsla to javafx.fxml;
 }

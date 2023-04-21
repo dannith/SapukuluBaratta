@@ -117,7 +117,7 @@ public class Controller extends Pane implements Initializable{
                 faraUpp(fxControls);
                 uppiControles = false;
             }
-                faraUpp(fxStigview);
+              faraUpp(fxStigview);
                 uppiScoreBoard=!uppiScoreBoard;
         }
     }
