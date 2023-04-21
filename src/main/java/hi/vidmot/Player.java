@@ -156,5 +156,4 @@ public class Player extends Pane {
         }
         return false;
     }
-    //andri
 }
