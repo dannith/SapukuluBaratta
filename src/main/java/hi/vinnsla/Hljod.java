@@ -19,14 +19,6 @@ public class Hljod {
         mediaPlayer1.play();
     }
 
-    public static void pop() {
-        File file2 = new File(pop);
-        Media media2 = new Media(file2.toURI().toString());
-        mediapop = new MediaPlayer(media2);
-        mediapop.setCycleCount(MediaPlayer.INDEFINITE);
-        mediapop.play();
-    }
-
     public static void mainMute() {
         if (mediaPlayer1.getVolume() > 0) {
             mediaPlayer1.setVolume(0);
@@ -37,6 +29,14 @@ public class Hljod {
         if (mediaPlayer1.getVolume() == 0) {
             mediaPlayer1.setVolume(1);
         }
+    }
+
+    public static void pop() {
+        File file2 = new File(pop);
+        Media media2 = new Media(file2.toURI().toString());
+        mediapop = new MediaPlayer(media2);
+        mediapop.setCycleCount(MediaPlayer.INDEFINITE);
+        mediapop.play();
     }
 
     public static void popmute() {

@@ -57,7 +57,7 @@ public class Controller implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //Hljod.main();
+        Hljod.main();
 
         fxControls.setTranslateY(500);
         fxStigview.setTranslateY(500);
@@ -107,7 +107,7 @@ public class Controller implements Initializable{
         Millisena.lesa(this, fxContent, fxAnchorRoot, fxPlayButton, "level-one.fxml");
         fxpane.setVisible(false);
         fxmenus.setVisible(false);
-        //GameManager.getPlayer().initKeys();
+        GameManager.getPlayer().initKeys();
     }
 
     @FXML

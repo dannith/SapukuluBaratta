@@ -32,6 +32,6 @@ public class BarView extends Pane {
     }
 
     public void initBinds(IntegerProperty lives, IntegerProperty score, DoubleProperty levelProgress) {
-        //fxProgressBar.progressProperty().bind(levelProgress);
+        fxProgressBar.progressProperty().bind(levelProgress);
     }
 }

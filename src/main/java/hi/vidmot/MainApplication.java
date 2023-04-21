@@ -15,13 +15,12 @@ private Image setIcon(){
 }
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("level-one.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("forsida-view.fxml"));
         stage.setTitle("Bubble Struggle");
         Scene scene  = new Scene(root);
         stage.setScene(scene);
         stage.getIcons().add(setIcon());
         stage.show();
-        GameManager.getPlayer().initKeys();
     }
 
     public static void main(String[] args) {
