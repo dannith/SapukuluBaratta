@@ -38,16 +38,4 @@ public class Hljod {
         mediapop.setCycleCount(1);
         mediapop.play();
     }
-
-    public static void popmute() {
-        if (mediapop.getVolume() > 0) {
-            mediapop.setVolume(0);
-        }
-    }
-
-    public static void popunmute() {
-        if (mediapop.getVolume() == 0) {
-            mediapop.setVolume(1);
-        }
-    }
 }

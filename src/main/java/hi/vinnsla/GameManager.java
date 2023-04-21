@@ -45,14 +45,10 @@ public class GameManager {
     private static Label levelInfoLabel;
     private static LevelBase levelController;
     private static boolean isFirstLevel;
-
-
     private static Timeline timeline;
-
-
     public static GameState state;
 
-    //andri
+
     public static void initManager(){
         deltaTime = 0;
         lastTime = System.nanoTime();
@@ -182,6 +178,14 @@ public class GameManager {
 
     public static void increaseScore(int scoreIncrease){
         score.set(score.get()+scoreIncrease);
+    }
+
+    public static int getScore() {
+        return score.get();
+    }
+
+    public static IntegerProperty scoreProperty() {
+        return score;
     }
 
     public static void spawnBubble(double x, double y, String id){
