@@ -38,6 +38,6 @@ public class ControlsView extends Pane {
     }
     @FXML
     public void onClickUp(ActionEvent actionEvent) {
-        fxTexti.setText("Player moves Up");
+        fxTexti.setText("Player Shoots");
     }
 }
