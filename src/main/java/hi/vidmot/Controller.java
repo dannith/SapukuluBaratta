@@ -57,7 +57,7 @@ public class Controller implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Hljod.main();
+        //Hljod.main();
 
         fxControls.setTranslateY(500);
         fxStigview.setTranslateY(500);

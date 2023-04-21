@@ -1,5 +1,6 @@
 package hi.vidmot;
 
+import hi.vinnsla.GameManager;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.fxml.FXML;
@@ -78,7 +79,7 @@ public class Bubble extends Pane {
             }
             if(getId().substring(1,2).equals("r")) xStartSpeed = -150;
             else xStartSpeed = 150;
-            if(getId().substring(1,2).equals("b")) yStartSpeed = bounce;
+            if(getId().length() == 3 && getId().substring(2,3).equals("b")) yStartSpeed = bounce;
             else yStartSpeed = 0;
         } else{
             System.out.println("MISSING ID ON: "+this);
@@ -131,9 +132,27 @@ public class Bubble extends Pane {
         disable();
     }  // Eftir að kúla skemmist, hverfur (og býr til 2 nýjar kúlur ef á við)
     protected void disable(){
-        enabled = false;
-        xPosition.set(OUT_OF_BOUNDS);
-        yPosition.set(OUT_OF_BOUNDS);
+        String id ="";
+        if(getId() != null) {
+            switch (getId().substring(0, 1)) {
+                case "l":
+                    id += "m";
+                    break;
+                case "m":
+                    id += "s";
+                    break;
+                default:
+                    System.out.println("MISSING ID ON: " + this);
+                    break;
+            }
+            if (id.equals("m") || id.equals("s")) {
+                GameManager.spawnBubble(fxBubble.getCenterX() + getLayoutX(), fxBubble.getCenterY() + getLayoutY(), id + "rb");
+                GameManager.spawnBubble(fxBubble.getCenterX() + getLayoutX(), fxBubble.getCenterY() + getLayoutY(), id + "lb");
+            }
+            enabled = false;
+            xPosition.set(OUT_OF_BOUNDS);
+            yPosition.set(OUT_OF_BOUNDS);
+        }
     }
 
     public boolean isEnabled(){

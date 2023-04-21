@@ -6,6 +6,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
+import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
@@ -28,11 +29,12 @@ public class Player extends Pane {
     private boolean hookOut = false;
     private double hookSpeed = 600;
 
-    public static Map<KeyCode, Boolean> inputKeys = new HashMap<>();
+    public static Map<KeyCode, Boolean> inputKeys;
 
     private double xSpeed = 240;
 
     public void initKeys(){
+            inputKeys = new HashMap<>();
             inputKeys.put(KeyCode.UP, false);
             inputKeys.put(KeyCode.LEFT, false);
             inputKeys.put(KeyCode.DOWN, false);
@@ -70,7 +72,7 @@ public class Player extends Pane {
         hookOut = false;
     }
 
-    public void update(double deltaTime, List<Bubble> bubbles) {
+    public void update(double deltaTime, List<Bubble> bubbles, List<Bubble> extraBubbles) {
         if(inputKeys.get(KeyCode.LEFT) != inputKeys.get(KeyCode.RIGHT)){
             if(inputKeys.get(KeyCode.LEFT)) fxPlayer.setX(fxPlayer.getX() - xSpeed * deltaTime);
             else fxPlayer.setX(fxPlayer.getX() + xSpeed * deltaTime);
@@ -80,6 +82,20 @@ public class Player extends Pane {
             fxHook.setY(fxPlayer.getY() + fxPlayer.getHeight());
             hookOut = true;
         }
+        for(int i = 0; i < extraBubbles.size(); i++){
+            if(circleRect(extraBubbles.get(i).getWorldCenterX(), extraBubbles.get(i).getWorldCenterY(), extraBubbles.get(i).fxBubble.getRadius(),
+                    getHookWorldX(), getHookWorldY(), fxHook.getWidth(), fxHook.getHeight()) && hookOut){
+                fxHook.setY(10000);
+                hookOut = false;
+                extraBubbles.get(i).blowUp();
+            }
+            if(circleRect(extraBubbles.get(i).getWorldCenterX(), extraBubbles.get(i).getWorldCenterY(), extraBubbles.get(i).fxBubble.getRadius(),
+                    getPlayerWorldX(), getPlayerWorldY(), fxPlayer.getWidth(), fxPlayer.getHeight())){
+                GameManager.setState(GameState.lose);
+                return;
+            }
+        }
+
         for(Bubble bubble : bubbles){
             if(circleRect(bubble.getWorldCenterX(), bubble.getWorldCenterY(), bubble.fxBubble.getRadius(),
                     getHookWorldX(), getHookWorldY(), fxHook.getWidth(), fxHook.getHeight()) && hookOut){
@@ -93,6 +109,7 @@ public class Player extends Pane {
                 return;
             }
         }
+
         if(hookOut){
             fxHook.setY(fxHook.getY() - hookSpeed * deltaTime);
             if(fxHook.getY() + getLayoutY() < 0){

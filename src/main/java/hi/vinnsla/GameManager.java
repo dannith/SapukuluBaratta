@@ -2,11 +2,14 @@ package hi.vinnsla;
 
 import hi.vidmot.BarView;
 import hi.vidmot.Bubble;
+import hi.vidmot.LevelOne;
 import hi.vidmot.Player;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.Scene;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.Pane;
@@ -25,7 +28,8 @@ public class GameManager {
     private static int elapsedSeconds = 0;
     private static double countdown;
     final private static int maxLives = 2;
-    private static int lives;
+    public static IntegerProperty lives= new SimpleIntegerProperty(0);
+    public static IntegerProperty score = new SimpleIntegerProperty(0);
     private static Player levelPlayer;
     public static Player getPlayer(){
         return levelPlayer;
@@ -35,7 +39,7 @@ public class GameManager {
     private static Pane levelExtraBubbles;
     private static double levelTimerMax;
     private static double levelTimer;
-    private static ProgressBar levelProgressBar;
+    private static BarView levelBarView;
     private static DoubleProperty levelProgress;
     private static double levelXBounderies;
     private static double levelYBounderies;
@@ -47,12 +51,10 @@ public class GameManager {
     public static void initManager(){
         deltaTime = 0;
         lastTime = System.nanoTime();
-        levelPlayer.initKeys();
         initGameLoop();
     }
 
     private static void initGameLoop() {
-        init();
         KeyFrame k = new KeyFrame(Duration.millis(20),
                 e-> {
                     gameLoop();
@@ -60,11 +62,11 @@ public class GameManager {
         Timeline t = new Timeline(k);
         t.setCycleCount(Timeline.INDEFINITE);
         t.play();
+
     }
 
     public static void init(){
-        levelBubblesSpawned.clear();
-        levelExtraBubbles.getChildren().clear();
+        levelBubblesSpawned = new ArrayList<>();
         for(Bubble bubble : levelBubbles)
             bubble.init();
         setState(GameState.reset);
@@ -95,11 +97,15 @@ public class GameManager {
                     if(bubble.isEnabled()) gameWon = false;
                     bubble.update(deltaTime, levelXBounderies, levelYBounderies);
                 }
+                for(Bubble bubble : levelBubblesSpawned){
+                    if(bubble.isEnabled()) gameWon = false;
+                    bubble.update(deltaTime, levelXBounderies, levelYBounderies);
+                }
                 if(gameWon){
                     setState(GameState.reset);
                     break;
                 }
-                levelPlayer.update(deltaTime, levelBubbles);
+                levelPlayer.update(deltaTime, levelBubbles, levelBubblesSpawned);
                 if(levelTimer <= 0)
                     setState(GameState.lose);
                 break;
@@ -109,10 +115,12 @@ public class GameManager {
     public static void setState(GameState nextState){
         switch(nextState){
             case reset:
-                lives = maxLives;
+                lives.set(maxLives);
                 setState(GameState.starting);
                 break;
             case starting:
+                levelBubblesSpawned.clear();
+                levelExtraBubbles.getChildren().clear();
                 countdown = 3;
                 levelPlayer.reset();
                 levelProgress.set(1);
@@ -129,9 +137,9 @@ public class GameManager {
                 state = GameState.ongoing;
                 break;
             case lose:
-                lives--;
+                lives.set(lives.get() - 1);
                 System.out.println("Lost round");
-                if(lives == 0){
+                if(lives.get() == 0){
                     setState(GameState.reset);
                     System.out.println("Game Over");
                 } else setState(GameState.starting);
@@ -144,6 +152,8 @@ public class GameManager {
         bubble.setLayoutX(x);
         bubble.setLayoutY(y);
         levelExtraBubbles.getChildren().add(bubble);
+        levelBubblesSpawned.add(bubble);
+        bubble.init();
     }
 
     public static void sendLevelInfo(Player player, Pane bubbles, Pane extraBubbles, double xBounderies, double yBounderies, double timer, BarView barView){
@@ -157,31 +167,10 @@ public class GameManager {
         levelYBounderies = yBounderies;
         levelTimerMax = timer;
 
-        levelProgressBar = barView.getFxMyProgressbar();
-        levelProgressBar.progressProperty();
         levelProgress = new SimpleDoubleProperty(1);
-        levelProgressBar.progressProperty().bind(levelProgress);
-
+        levelBarView = barView;
+        barView.initBinds(lives, score, levelProgress);
         initManager();
+        init();
     }
-
-    /*
-    public static void sendLevelInfo(List<Bubble> bubbles,double xBounderies, double yBounderies, double timer,
-                                     List<Rectangle> collidables, Player player, Scene scene, ProgressBar progressBar){
-        levelBubbles = bubbles;
-        levelTimerMax = timer;
-        levelCollidables = collidables;
-        levelPlayer = player;
-        levelXBounderies = xBounderies;
-        levelYBounderies = yBounderies;
-        levelProgressBar = progressBar;
-
-        levelProgressBar.progressProperty();
-        levelProgress = new SimpleDoubleProperty(1);
-        levelProgressBar.progressProperty().bind(levelProgress);
-
-
-        initManager();
-    }
-    */
 }

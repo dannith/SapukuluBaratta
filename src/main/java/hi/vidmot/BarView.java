@@ -1,5 +1,7 @@
 package hi.vidmot;
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.IntegerProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -11,7 +13,7 @@ import java.io.IOException;
 
 public class BarView extends Pane {
     @FXML
-    ProgressBar fxMyProgressbar;
+    public ProgressBar fxProgressBar;
     @FXML
     Label fxLivesLeftLabel;
     @FXML
@@ -20,24 +22,16 @@ public class BarView extends Pane {
 
     public BarView(){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("bar-view.fxml"));
-        fxmlLoader.setRoot(this);
-        fxmlLoader.setController(this);
+        fxmlLoader.setRoot(this);   // rótin á viðmótstrénu sett hér
+        fxmlLoader.setController(this); // controllerinn settur hér en ekki í .fxml skránni
         try {
-            fxmlLoader.load();
+            fxmlLoader.load();          // viðmótstréð lesið inn (þ.e. .fxml skráin)
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
     }
 
-    public ProgressBar getFxMyProgressbar() {
-        return fxMyProgressbar;
-    }
-
-    public Label getFxLivesLeftLabel() {
-        return fxLivesLeftLabel;
-    }
-
-    public Label getFxStigLabel() {
-        return fxStigLabel;
+    public void initBinds(IntegerProperty lives, IntegerProperty score, DoubleProperty levelProgress) {
+        //fxProgressBar.progressProperty().bind(levelProgress);
     }
 }

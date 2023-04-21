@@ -2,6 +2,7 @@
 
 <?import hi.vidmot.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
 
 <Pane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.vidmot.LevelOne">
     <Player fx:id="fxPlayer" layoutX="400.0" layoutY="450.0" />
