@@ -19,18 +19,21 @@ public class BarView extends Pane {
     Label fxStigLabel;
 
     /**
-     * Barview Constructor sem sér um að lesa inn fxml skrána
+     * Barview Constructor sem sér um að lesa inn fxml skrána fyrir sérhæfða klasann bar-view
      */
     public BarView(){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("bar-view.fxml"));
-        fxmlLoader.setRoot(this);   // rótin á viðmótstrénu sett hér
-        fxmlLoader.setController(this); // controllerinn settur hér en ekki í .fxml skránni
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
         try {
-            fxmlLoader.load();          // viðmótstréð lesið inn (þ.e. .fxml skráin)
+            fxmlLoader.load();
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
     }
+    /**
+     * Aðferð sem sér um að binda viðmótshluti
+     */
 
     public void initBinds(IntegerProperty lives, IntegerProperty score, DoubleProperty levelProgress) {
         fxLivesLeftLabel.textProperty().bind(lives.asString());

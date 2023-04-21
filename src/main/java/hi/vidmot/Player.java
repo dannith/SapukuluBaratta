@@ -36,6 +36,10 @@ public class Player extends Pane {
 
     private double xSpeed = 240;
 
+    /**
+     * Aðferð sem sér um að skipta og snúa leikmanni eftir örvatökkum sem hann ýtir á
+     * @return mynd af leikmanni í réttri stöðu m.v. takka sem er ýtt á
+     */
     private Image switchImage(){
         Image image;
         String sides = "playerguy.png";
@@ -53,6 +57,9 @@ public class Player extends Pane {
             return new Image(forward);
     }
 
+    /**
+     * Stillir takkana fyrir núverandi senu
+     */
     public void initKeys() {
         inputKeys = new HashMap<>();
         inputKeys.put(KeyCode.UP, false);
@@ -74,6 +81,9 @@ public class Player extends Pane {
         });
     }
 
+    /**
+     * Constructor fyrir sérhæfða klasann player, sem sér einnig um að binda mynd við Rectangle.
+     */
     public Player() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("player.fxml"));
         fxmlLoader.setRoot(this);   // rótin á viðmótstrénu sett hér
@@ -163,22 +173,21 @@ public class Player extends Pane {
     boolean circleRect(double cx, double cy, double radius, double rx, double ry, double rw, double rh) {
 
         radius *= 0.8;
-        // temporary variables to set edges for testing
+
         double testX = cx;
         double testY = cy;
 
-        // which edge is closest?
-        if (cx < rx) testX = rx;      // test left edge
-        else if (cx > rx + rw) testX = rx + rw;   // right edge
-        if (cy < ry) testY = ry;      // top edge
-        else if (cy > ry + rh) testY = ry + rh;   // bottom edge
 
-        // get distance from closest edges
+        if (cx < rx) testX = rx;
+        else if (cx > rx + rw) testX = rx + rw;
+        if (cy < ry) testY = ry;
+        else if (cy > ry + rh) testY = ry + rh;
+
         double distX = cx - testX;
         double distY = cy - testY;
         double distance = sqrt((distX * distX) + (distY * distY));
 
-        // if the distance is less than the radius, collision!
+
         if (distance <= radius) {
             return true;
         }
