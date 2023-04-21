@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 
 <fx:root prefHeight="0.0" prefWidth="0.0" type="Pane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
     <Rectangle fx:id="fxHook" height="800.0" layoutX="-3.0" layoutY="-55.0" width="6.0" />
-    <Rectangle fx:id="fxPlayer" height="45.0" layoutX="-10.0" layoutY="-45.0" width="20.0" />
+    <Rectangle fx:id="fxPlayer" fill="#020202" height="45.0" layoutX="-10.0" layoutY="-45.0" style="-fx-opacity: 0.0;" styleClass="player-rectangle" width="20.0" />
+    <ImageView fx:id="fxPlayerImage" fitHeight="65.0" fitWidth="30.0" layoutX="-10.0" layoutY="-45.0" preserveRatio="true">
+        <Image url="@../../playerguy.png" />
+    </ImageView>
 </fx:root>

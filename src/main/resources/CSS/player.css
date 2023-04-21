@@ -1,0 +1,7 @@
+.player-rectangle {
+    -fx-shape: "M 0 0 L 200 0 L 200 100 L 0 100 L 0 0 Z";
+    -fx-background-insets: 5;
+    -fx-background-image: url("https://cdn.discordapp.com/attachments/1083324993825415219/1099087066396098641/hlidarmynd_kallinn.png");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
