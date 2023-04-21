@@ -184,10 +184,6 @@ public class GameManager {
         return score.get();
     }
 
-    public static IntegerProperty scoreProperty() {
-        return score;
-    }
-
     public static void spawnBubble(double x, double y, String id){
         Bubble bubble = new Bubble(id);
         bubble.setLayoutX(x);
