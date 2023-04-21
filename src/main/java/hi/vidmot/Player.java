@@ -2,6 +2,7 @@ package hi.vidmot;
 
 import hi.vinnsla.GameManager;
 import hi.vinnsla.GameState;
+import hi.vinnsla.Hljod;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -101,8 +102,10 @@ public class Player extends Pane {
         if (inputKeys.get(KeyCode.UP) && !hookOut) {
             fxHook.setX(fxPlayer.getX());
             fxHook.setY(fxPlayer.getY() + fxPlayer.getHeight());
+            Hljod.shoot();
             hookOut = true;
         }
+
         for (int i = 0; i < extraBubbles.size(); i++) {
             if (circleRect(extraBubbles.get(i).getWorldCenterX(), extraBubbles.get(i).getWorldCenterY(), extraBubbles.get(i).fxBubble.getRadius(),
                     getHookWorldX(), getHookWorldY(), fxHook.getWidth(), fxHook.getHeight()) && hookOut) {
