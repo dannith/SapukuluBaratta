@@ -18,7 +18,9 @@ public class BarView extends Pane {
     @FXML
     Label fxStigLabel;
 
-
+    /**
+     * Barview Constructor sem sér um að lesa inn fxml skrána
+     */
     public BarView(){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("bar-view.fxml"));
         fxmlLoader.setRoot(this);   // rótin á viðmótstrénu sett hér

@@ -37,7 +37,9 @@ public class Bubble extends Pane {
     private double ySpeed;    // lóðréttur hraði kúlu
 
 
-
+    /**
+     * Bubble constructor fyrir sérhæfða klassan bubble-medium.
+     */
     public Bubble(){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("bubble-medium.fxml"));
         fxmlLoader.setRoot(this);   // rótin á viðmótstrénu sett hér
@@ -49,11 +51,19 @@ public class Bubble extends Pane {
         }
     }
 
+    /**
+     * Kúlu er gefið auðkenni
+     * @param id
+     */
     public Bubble(String id){
         this();
         setId(id);
     }
 
+    /**
+     * Aðferð sem athugar hver stærð kúlu er og lætur hana skoppa í samhengi við það.
+     *
+     */
     public void init() {
         if(getId() != null){
             switch(getId().substring(0,1)){
