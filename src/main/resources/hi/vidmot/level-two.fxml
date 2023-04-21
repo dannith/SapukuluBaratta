@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import hi.vidmot.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.control.Label?>
 <Pane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.vidmot.LevelTwo">
     <Rectangle height="1000.0" width="1000.0">
         <fill>
@@ -38,7 +38,7 @@
             <Bubble id="sr" layoutX="500.0" layoutY="100.0" />
             </Pane>
             <Pane fx:id="fxExtraBubbles" />
-            <HBox prefHeight="450.0" prefWidth="800.0"><Label fx:id="fxInfoText" alignment="CENTER" contentDisplay="CENTER" prefHeight="450.0" prefWidth="800.0" text="GET READY" StackPane.alignment="CENTER">
+            <HBox prefHeight="450.0" prefWidth="800.0"><Label fx:id="fxInfoText" alignment="CENTER" contentDisplay="CENTER" prefHeight="450.0" prefWidth="800.0" text="GET READY" textAlignment="CENTER" StackPane.alignment="CENTER">
                 <font>
                     <Font name="MV Boli" size="64.0" />
                 </font></Label></HBox>

@@ -30,13 +30,13 @@ public class LevelTwo extends LevelBase implements Initializable{
     BarView fxBarView;
     @FXML
     Label fxInfoText;
-    final double levelTimer = 20; // sec per level
+    final double levelTimer = 30; // sec per level
     final double xBounderies = 800;
     final double yBounderies = 450;
     final String nextLevel = "level-three.fxml";
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        GameManager.sendLevelInfo(fxPlayer, fxBubbles, fxExtraBubbles, xBounderies, yBounderies, levelTimer, fxBarView, this, fxInfoText, false);
+        GameManager.sendLevelInfo(fxPlayer, fxBubbles, fxExtraBubbles, xBounderies, yBounderies, levelTimer, fxBarView, this, fxInfoText, false, 2);
     }
 
     public void loadNextLevel() throws IOException {

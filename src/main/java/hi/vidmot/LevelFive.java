@@ -30,13 +30,13 @@ public class LevelFive extends LevelBase implements Initializable{
     BarView fxBarView;
     @FXML
     Label fxInfoText;
-    final double levelTimer = 20; // sec per level
+    final double levelTimer = 60; // sec per level
     final double xBounderies = 800;
     final double yBounderies = 450;
     final String nextLevel = "forsida-view.fxml";
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        GameManager.sendLevelInfo(fxPlayer, fxBubbles, fxExtraBubbles, xBounderies, yBounderies, levelTimer, fxBarView, this, fxInfoText, false);
+        GameManager.sendLevelInfo(fxPlayer, fxBubbles, fxExtraBubbles, xBounderies, yBounderies, levelTimer, fxBarView, this, fxInfoText, false, 5);
     }
 
     public void loadNextLevel() throws IOException {

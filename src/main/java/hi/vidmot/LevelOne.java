@@ -36,7 +36,7 @@ public class LevelOne extends LevelBase implements Initializable{
     final String nextLevel = "level-two.fxml";
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        GameManager.sendLevelInfo(fxPlayer, fxBubbles, fxExtraBubbles, xBounderies, yBounderies, levelTimer, fxBarView, this, fxInfoText, true);
+        GameManager.sendLevelInfo(fxPlayer, fxBubbles, fxExtraBubbles, xBounderies, yBounderies, levelTimer, fxBarView, this, fxInfoText, true, 1);
     }
 
     public void loadNextLevel() throws IOException {

@@ -45,11 +45,8 @@ public class GameManager {
     private static Label levelInfoLabel;
     private static LevelBase levelController;
     private static boolean isFirstLevel;
-
-
+    private static double scoreStep;
     private static Timeline timeline;
-
-
     public static GameState state;
 
     //andri
@@ -120,6 +117,35 @@ public class GameManager {
                 if(levelTimer <= 0)
                     setState(GameState.lose);
                 break;
+            case lose:
+                countdown -= deltaTime;
+                if(countdown <= 0){
+                    if(lives.get() == 0){
+                        // búa til alarmbox sem vistar í highscore
+
+
+                        System.out.println("Game Over");
+                        timeline.stop();
+                        timeline = null;
+                        try {
+                            levelController.loadNextLevel("forsida-view.fxml");
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    } else{
+                        setState(GameState.starting);
+                    }
+                }
+                break;
+            case win:
+                countdown -= deltaTime;
+                levelProgress.set(levelProgress.get() - scoreStep * deltaTime);
+                if(countdown <= 0){
+                    Hljod.toggleMain();
+                    loadNext();
+                }
+                break;
+
         }
     }
 
@@ -132,6 +158,7 @@ public class GameManager {
                 setState(GameState.starting);
                 break;
             case starting:
+                Hljod.getReady();
                 score.set(maxScore);
                 levelBubblesSpawned.clear();
                 levelExtraBubbles.getChildren().clear();
@@ -153,30 +180,39 @@ public class GameManager {
                 state = GameState.ongoing;
                 break;
             case lose:
+                Hljod.lose();
+                countdown = 1;
                 lives.set(lives.get() - 1);
                 System.out.println("Lost round");
-                if(lives.get() == 0){
-                    // búa til alarmbox sem vistar í highscore
-
-
-                    System.out.println("Game Over");
-                    try {
-                        levelController.loadNextLevel("forsida-view.fxml");
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                } else setState(GameState.starting);
+                state = GameState.lose;
+                if(lives.get() == 0) {
+                    levelInfoLabel.setText("GAME OVER \nFinal score: "+maxScore);
+                    levelInfoLabel.setVisible(true);
+                }
                 break;
             case win:
+                state = GameState.win;
+                levelInfoLabel.setVisible(true);
+                int scorebonus = (int) (levelProgress.get() *1000);
+                levelInfoLabel.setText("Time bonus! +" + scorebonus);
+                maxScore += scorebonus;
+                Hljod.win();
+                Hljod.toggleMain();
+                countdown = 1.5;
+                scoreStep = levelProgress.get() / countdown;
                 maxScore += score.get();
-                timeline.stop();
-                timeline = null;
-                try {
-                    levelController.loadNextLevel();
-                    levelPlayer.initKeys();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
+                break;
+        }
+    }
+
+    private static void loadNext(){
+        timeline.stop();
+        timeline = null;
+        try {
+            levelController.loadNextLevel();
+            levelPlayer.initKeys();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -194,7 +230,7 @@ public class GameManager {
     }
 
     public static void sendLevelInfo(Player player, Pane bubbles, Pane extraBubbles, double xBounderies, double yBounderies,
-                                     double timer, BarView barView, LevelBase base, Label infoLabel, boolean firstLevel){
+                                     double timer, BarView barView, LevelBase base, Label infoLabel, boolean firstLevel, int levelNumber){
         levelPlayer = player;
         levelBubbles = new ArrayList<Bubble>();
         for(var bubble : bubbles.getChildren()){
@@ -214,6 +250,23 @@ public class GameManager {
         levelController = base;
         isFirstLevel = firstLevel;
 
+        switch (levelNumber){
+            case 1:
+                Hljod.level1();
+                break;
+            case 2:
+                Hljod.level2();
+                break;
+            case 3:
+                Hljod.level3();
+                break;
+            case 4:
+                Hljod.level4();
+                break;
+            case 5:
+                Hljod.level5();
+                break;
+        }
         initManager();
         init();
     }

@@ -2,6 +2,7 @@ package hi.vidmot;
 
 import hi.vinnsla.GameManager;
 import hi.vinnsla.GameState;
+import hi.vinnsla.Hljod;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -78,6 +79,7 @@ public class Player extends Pane {
             else fxPlayer.setX(fxPlayer.getX() + xSpeed * deltaTime);
         }
         if(inputKeys.get(KeyCode.UP) && !hookOut){
+            Hljod.shoot();
             fxHook.setX(fxPlayer.getX());
             fxHook.setY(fxPlayer.getY() + fxPlayer.getHeight());
             hookOut = true;
