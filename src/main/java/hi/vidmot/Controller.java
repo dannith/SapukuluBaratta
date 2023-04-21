@@ -90,6 +90,7 @@ public class Controller extends Pane implements Initializable{
         Image unmute = new Image(file1.toURI().toString());
         File file2 = new File("src/main/resources/hi/Myndir/soundOff.png");
         Image mute = new Image(file2.toURI().toString());
+        ImageView imv = new ImageView();
 
         if(!onmute){
             fxmynd.setImage(mute);
