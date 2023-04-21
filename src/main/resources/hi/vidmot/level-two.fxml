@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import hi.vidmot.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+
+<Pane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.vidmot.LevelTwo">
+    <Rectangle height="1000.0" width="1000.0">
+        <fill>
+         <RadialGradient centerX="0.5994475138121547" centerY="0.13981042654028436" radius="0.5">
+            <stops>
+               <Stop>
+                  <color>
+                     <Color red="0.5166000127792358" green="0.5187827348709106" blue="0.8199999928474426" />
+                  </color>
+               </Stop>
+               <Stop offset="0.4570446735395189">
+                  <color>
+                     <Color red="0.524399995803833" green="0.6277928352355957" blue="0.7599999904632568" />
+                  </color>
+               </Stop>
+               <Stop offset="1.0">
+                  <color>
+                     <Color red="0.6215277910232544" green="0.75" blue="0.6300926208496094" />
+                  </color>
+               </Stop>
+            </stops>
+         </RadialGradient>
+        </fill></Rectangle>
+        <Pane>
+            <Player fx:id="fxPlayer" layoutX="400.0" layoutY="450.0" />
+            <Pane fx:id="fxBubbles">
+                <Bubble id="sr" layoutX="50.0" layoutY="100.0" />
+            <Bubble id="ml" layoutX="300.0" layoutY="200.0" />
+            <Bubble id="sr" layoutX="500.0" layoutY="100.0" />
+            </Pane>
+            <Pane fx:id="fxExtraBubbles" />
+            <BarView fx:id="fxBarView" layoutY="450.0" />
+        </Pane>
+</Pane>

@@ -3,15 +3,33 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
-<?import javafx.scene.text.Font?>
 
 <fx:root prefHeight="50.0" prefWidth="800.0" type="Pane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <Rectangle height="50.0" width="800.0">
+      <fill>
+         <LinearGradient endX="0.10426540284360186" endY="0.8767772511848342" startX="0.3886255924170616" startY="0.009478672985781977">
+            <stops>
+               <Stop>
+                  <color>
+                     <Color red="0.22368420660495758" green="0.16051413118839264" blue="0.16051413118839264" />
+                  </color>
+               </Stop>
+               <Stop offset="1.0">
+                  <color>
+                     <Color red="0.8684210777282715" green="0.29349416494369507" blue="0.29349416494369507" />
+                  </color>
+               </Stop>
+            </stops>
+         </LinearGradient>
+      </fill></Rectangle>
     <ImageView fitHeight="30.0" fitWidth="50.0" layoutX="71.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@../Myndir/lifeIcon.png" />
     </ImageView>
 
-    <Label fx:id="fxLivesLeftLabel" layoutX="109.0" layoutY="10" prefHeight="30" prefWidth="56.0" text="2" textAlignment="CENTER">
+    <Label fx:id="fxLivesLeftLabel" layoutX="109.0" layoutY="10" prefHeight="30" prefWidth="56.0" text="2" textAlignment="CENTER" textFill="WHITE">
       <font>
          <Font size="20.0" />
       </font></Label>

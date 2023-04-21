@@ -2,14 +2,31 @@
 
 <?import hi.vidmot.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
 
 <Pane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.vidmot.LevelOne">
+            <Rectangle height="1000.0" width="1000.0">
+      <fill>
+         <LinearGradient endX="1.0" endY="1.0">
+            <stops>
+               <Stop>
+                  <color>
+                     <Color red="1.0" green="0.7546296119689941" blue="0.7546296119689941" />
+                  </color>
+               </Stop>
+               <Stop offset="1.0">
+                  <color>
+                     <Color red="0.5324074029922485" green="0.8831018805503845" blue="1.0" />
+                  </color>
+               </Stop>
+            </stops>
+         </LinearGradient>
+      </fill></Rectangle>
     <Player fx:id="fxPlayer" layoutX="400.0" layoutY="450.0" />
     <Pane fx:id="fxBubbles">
-        <Bubble id="lr" layoutX="50.0" layoutY="100.0" />
-        <Bubble id="ml" layoutX="300.0" layoutY="200.0" />
-        <Bubble id="sr" layoutX="500.0" layoutY="100.0" />
+        <Bubble id="ml" layoutX="50.0" layoutY="100.0" />
+        <Bubble id="mr" layoutX="300.0" layoutY="200.0" />
     </Pane>
     <Pane fx:id="fxExtraBubbles" />
     <BarView fx:id="fxBarView" layoutY="450.0" />

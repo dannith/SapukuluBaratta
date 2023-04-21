@@ -26,7 +26,7 @@ import java.util.ResourceBundle;
 
 
 
-public class Controller implements Initializable{
+public class Controller extends Pane implements Initializable{
     @FXML
     public Button fxPlayButton;
     @FXML
@@ -104,7 +104,7 @@ public class Controller implements Initializable{
 
     @FXML
     public void onPlay(ActionEvent event) throws IOException {
-        Millisena.lesa(this, fxContent, fxAnchorRoot, fxPlayButton, "level-one.fxml");
+        Millisena.lesa(this, fxContent, fxAnchorRoot, fxPlayButton.getScene(), "level-one.fxml");
         fxpane.setVisible(false);
         fxmenus.setVisible(false);
         GameManager.getPlayer().initKeys();

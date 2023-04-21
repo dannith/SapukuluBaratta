@@ -35,7 +35,7 @@ public class Hljod {
         File file2 = new File(pop);
         Media media2 = new Media(file2.toURI().toString());
         mediapop = new MediaPlayer(media2);
-        mediapop.setCycleCount(MediaPlayer.INDEFINITE);
+        mediapop.setCycleCount(1);
         mediapop.play();
     }
 

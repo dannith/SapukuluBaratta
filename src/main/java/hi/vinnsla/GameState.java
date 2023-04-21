@@ -4,6 +4,7 @@ public enum GameState {
     reset,
     starting,
     ongoing,
-    lose
+    lose,
+    win
 }
 //andri

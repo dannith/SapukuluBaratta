@@ -1,9 +1,6 @@
 package hi.vinnsla;
 
-import hi.vidmot.BarView;
-import hi.vidmot.Bubble;
-import hi.vidmot.LevelOne;
-import hi.vidmot.Player;
+import hi.vidmot.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.beans.property.DoubleProperty;
@@ -12,14 +9,14 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.Scene;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.IOException;
+import java.util.*;
 
 public class GameManager {
     private static double deltaTime;
@@ -43,6 +40,11 @@ public class GameManager {
     private static DoubleProperty levelProgress;
     private static double levelXBounderies;
     private static double levelYBounderies;
+    private static LevelBase levelController;
+    private static boolean isFirstLevel;
+
+
+    private static Timeline timeline;
 
 
     public static GameState state;
@@ -55,21 +57,26 @@ public class GameManager {
     }
 
     private static void initGameLoop() {
-        KeyFrame k = new KeyFrame(Duration.millis(20),
-                e-> {
-                    gameLoop();
-                });
-        Timeline t = new Timeline(k);
-        t.setCycleCount(Timeline.INDEFINITE);
-        t.play();
+        if(timeline == null) {
+            KeyFrame k = new KeyFrame(Duration.millis(20),
+                    e -> {
+                        gameLoop();
+                    });
 
+            timeline = new Timeline(k);
+            timeline.setCycleCount(Timeline.INDEFINITE);
+            timeline.play();
+        }
     }
 
     public static void init(){
         levelBubblesSpawned = new ArrayList<>();
         for(Bubble bubble : levelBubbles)
             bubble.init();
-        setState(GameState.reset);
+        if(isFirstLevel)
+            setState(GameState.reset);
+        else
+            setState(GameState.starting);
     }
 
     private static void gameLoop() {
@@ -102,7 +109,8 @@ public class GameManager {
                     bubble.update(deltaTime, levelXBounderies, levelYBounderies);
                 }
                 if(gameWon){
-                    setState(GameState.reset);
+
+                    setState(GameState.win);
                     break;
                 }
                 levelPlayer.update(deltaTime, levelBubbles, levelBubblesSpawned);
@@ -140,10 +148,26 @@ public class GameManager {
                 lives.set(lives.get() - 1);
                 System.out.println("Lost round");
                 if(lives.get() == 0){
-                    setState(GameState.reset);
+                    // búa til alarmbox sem vistar í highscore
+
+
                     System.out.println("Game Over");
+                    try {
+                        levelController.loadNextLevel("forsida-view.fxml");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                 } else setState(GameState.starting);
                 break;
+            case win:
+                timeline.stop();
+                timeline = null;
+                try {
+                    levelController.loadNextLevel();
+                    levelPlayer.initKeys();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
         }
     }
 
@@ -156,7 +180,8 @@ public class GameManager {
         bubble.init();
     }
 
-    public static void sendLevelInfo(Player player, Pane bubbles, Pane extraBubbles, double xBounderies, double yBounderies, double timer, BarView barView){
+    public static void sendLevelInfo(Player player, Pane bubbles, Pane extraBubbles, double xBounderies, double yBounderies,
+                                     double timer, BarView barView, LevelBase base, boolean firstLevel){
         levelPlayer = player;
         levelBubbles = new ArrayList<Bubble>();
         for(var bubble : bubbles.getChildren()){
@@ -170,6 +195,10 @@ public class GameManager {
         levelProgress = new SimpleDoubleProperty(1);
         levelBarView = barView;
         barView.initBinds(lives, score, levelProgress);
+
+        levelController = base;
+        isFirstLevel = firstLevel;
+
         initManager();
         init();
     }

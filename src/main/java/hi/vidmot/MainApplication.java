@@ -20,6 +20,7 @@ private Image setIcon(){
         Scene scene  = new Scene(root);
         stage.setScene(scene);
         stage.getIcons().add(setIcon());
+        stage.setResizable(false);
         stage.show();
     }
 

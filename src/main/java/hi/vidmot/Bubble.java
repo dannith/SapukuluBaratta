@@ -1,6 +1,7 @@
 package hi.vidmot;
 
 import hi.vinnsla.GameManager;
+import hi.vinnsla.Hljod;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.fxml.FXML;
@@ -64,12 +65,12 @@ public class Bubble extends Pane {
                     break;
                 case "m":
                     fxBubble.setRadius(25);
-                    fxBubble.setFill(Color.LIGHTGREEN);
+                    fxBubble.setFill(Color.GREEN);
                     bounce = -450;
                     break;
                 case "s":
                     fxBubble.setRadius(10);
-                    fxBubble.setFill(Color.LIGHTCORAL);
+                    fxBubble.setFill(Color.BLUE);
                     bounce = -360;
                     break;
                 default:
@@ -121,14 +122,15 @@ public class Bubble extends Pane {
     }
 
     public double getWorldCenterX(){
-        return getLayoutX() + fxBubble.getCenterX();
+        return getLayoutX() + fxBubble.getLayoutX() + fxBubble.getCenterX();
     }
 
     public double getWorldCenterY(){
-        return getLayoutY() + fxBubble.getCenterY();
+        return getLayoutY() + fxBubble.getLayoutY() + fxBubble.getCenterY();
     }
 
     public void blowUp() {
+        Hljod.pop();
         disable();
     }  // Eftir að kúla skemmist, hverfur (og býr til 2 nýjar kúlur ef á við)
     protected void disable(){

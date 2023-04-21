@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class LevelOne extends LevelBase implements Initializable{
+public class LevelTwo extends LevelBase implements Initializable{
     @FXML
     Pane fxBubbles;
     @FXML
@@ -30,19 +30,14 @@ public class LevelOne extends LevelBase implements Initializable{
     final double levelTimer = 20; // sec per level
     final double xBounderies = 800;
     final double yBounderies = 450;
-    final String nextLevel = "level-two.fxml";
+    final String nextLevel = "forsida-view.fxml";
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        GameManager.sendLevelInfo(fxPlayer, fxBubbles, fxExtraBubbles, xBounderies, yBounderies, levelTimer, fxBarView, this, true);
+        GameManager.sendLevelInfo(fxPlayer, fxBubbles, fxExtraBubbles, xBounderies, yBounderies, levelTimer, fxBarView, this, false);
     }
 
     public void loadNextLevel() throws IOException {
-        FXMLLoader level = new FXMLLoader(this.getClass().getResource(nextLevel));
-        Parent parent = (Parent)level.load();
-        Scene scene = new Scene(parent);
-        Stage window = (Stage)fxPlayer.getScene().getWindow();
-        window.setScene(scene);
-        window.show();
+        loadNextLevel(nextLevel);
     }
 
     public void loadNextLevel(String levelToLoad) throws IOException {

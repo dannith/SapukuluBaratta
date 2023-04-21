@@ -120,19 +120,21 @@ public class Player extends Pane {
     }
 
     public double getPlayerWorldX(){
-        return getLayoutX() + fxPlayer.getX();
+        return getLayoutX() + fxPlayer.getLayoutX() + fxPlayer.getX();
     }
     public double getPlayerWorldY(){
-        return getLayoutY() + fxPlayer.getY();
+        return getLayoutY() + fxPlayer.getLayoutY() + fxPlayer.getY();
     }
     public double getHookWorldX(){
-        return getLayoutX() + fxHook.getX();
+        return getLayoutX() + fxHook.getLayoutX() + fxHook.getX();
     }
     public double getHookWorldY(){
-        return getLayoutY() + fxHook.getY();
+
+        return getLayoutY() + fxHook.getLayoutY() + fxHook.getY();
     }
     boolean circleRect(double cx, double cy, double radius, double rx, double ry, double rw, double rh) {
 
+        radius *= 0.8;
         // temporary variables to set edges for testing
         double testX = cx;
         double testY = cy;
