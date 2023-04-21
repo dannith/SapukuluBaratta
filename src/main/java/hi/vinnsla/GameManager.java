@@ -8,6 +8,7 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -24,9 +25,10 @@ public class GameManager {
     private static double elapsedTime = 0;
     private static int elapsedSeconds = 0;
     private static double countdown;
-    final private static int maxLives = 2;
+    final private static int maxLives = 8;
     public static IntegerProperty lives= new SimpleIntegerProperty(0);
     public static IntegerProperty score = new SimpleIntegerProperty(0);
+    private static int maxScore = 0;
     private static Player levelPlayer;
     public static Player getPlayer(){
         return levelPlayer;
@@ -40,6 +42,7 @@ public class GameManager {
     private static DoubleProperty levelProgress;
     private static double levelXBounderies;
     private static double levelYBounderies;
+    private static Label levelInfoLabel;
     private static LevelBase levelController;
     private static boolean isFirstLevel;
 
@@ -123,10 +126,13 @@ public class GameManager {
     public static void setState(GameState nextState){
         switch(nextState){
             case reset:
+                maxScore=0;
+                score.set(maxScore);
                 lives.set(maxLives);
                 setState(GameState.starting);
                 break;
             case starting:
+                score.set(maxScore);
                 levelBubblesSpawned.clear();
                 levelExtraBubbles.getChildren().clear();
                 countdown = 3;
@@ -134,11 +140,13 @@ public class GameManager {
                 levelProgress.set(1);
                 for(Bubble bubble: levelBubbles)
                     bubble.reset();
+                levelInfoLabel.setVisible(true);
                 System.out.println("Starting..");
 
                 state = GameState.starting;
                 break;
             case ongoing:
+                levelInfoLabel.setVisible(false);
                 System.out.println("Round started");
                 levelTimer = levelTimerMax;
 
@@ -160,6 +168,7 @@ public class GameManager {
                 } else setState(GameState.starting);
                 break;
             case win:
+                maxScore += score.get();
                 timeline.stop();
                 timeline = null;
                 try {
@@ -169,6 +178,10 @@ public class GameManager {
                     throw new RuntimeException(e);
                 }
         }
+    }
+
+    public static void increaseScore(int scoreIncrease){
+        score.set(score.get()+scoreIncrease);
     }
 
     public static void spawnBubble(double x, double y, String id){
@@ -181,7 +194,7 @@ public class GameManager {
     }
 
     public static void sendLevelInfo(Player player, Pane bubbles, Pane extraBubbles, double xBounderies, double yBounderies,
-                                     double timer, BarView barView, LevelBase base, boolean firstLevel){
+                                     double timer, BarView barView, LevelBase base, Label infoLabel, boolean firstLevel){
         levelPlayer = player;
         levelBubbles = new ArrayList<Bubble>();
         for(var bubble : bubbles.getChildren()){
@@ -195,6 +208,8 @@ public class GameManager {
         levelProgress = new SimpleDoubleProperty(1);
         levelBarView = barView;
         barView.initBinds(lives, score, levelProgress);
+
+        levelInfoLabel = infoLabel;
 
         levelController = base;
         isFirstLevel = firstLevel;

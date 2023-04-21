@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import hi.vidmot.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<Pane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.vidmot.LevelFour">
+    <Rectangle height="1000.0" width="1000.0">
+        <fill>
+            <RadialGradient centerX="0.6712707182320441" centerY="0.509478672985782" focusAngle="79.7" focusDistance="-1.0" radius="0.6839080459770115">
+                <stops>
+                    <Stop>
+                        <color>
+                            <Color red="0.5166000127792358" green="0.5187827348709106" blue="0.8199999928474426" />
+                        </color>
+                    </Stop>
+                    <Stop offset="0.4570446735395189">
+                        <color>
+                            <Color red="0.524399995803833" green="0.6277928352355957" blue="0.7599999904632568" />
+                        </color>
+                    </Stop>
+                    <Stop offset="0.7250859106529209">
+                        <color>
+                            <Color red="0.6052631735801697" green="0.6026478409767151" blue="0.5268031358718872" />
+                        </color>
+                    </Stop>
+               <Stop offset="1.0">
+                  <color>
+                     <Color red="0.06176900491118431" green="0.24865984916687012" blue="0.34210526943206787" />
+                  </color>
+               </Stop>
+                </stops>
+            </RadialGradient>
+        </fill></Rectangle>
+    <Pane>
+        <Player fx:id="fxPlayer" layoutX="400.0" layoutY="450.0" />
+        <Pane fx:id="fxBubbles">
+            <Bubble id="ml" layoutX="30.0" layoutY="100.0" />
+            <Bubble id="ll" layoutX="330.0" layoutY="300.0" />
+            <Bubble id="ml" layoutX="180.0" layoutY="200.0" />
+        </Pane>
+        <Pane fx:id="fxExtraBubbles" />
+        <HBox prefHeight="450.0" prefWidth="800.0"><Label fx:id="fxInfoText" alignment="CENTER" contentDisplay="CENTER" prefHeight="450.0" prefWidth="800.0" text="GET READY" StackPane.alignment="CENTER">
+            <font>
+                <Font name="MV Boli" size="64.0" />
+            </font></Label></HBox>
+        <BarView fx:id="fxBarView" layoutY="450.0" />
+    </Pane>
+</Pane>

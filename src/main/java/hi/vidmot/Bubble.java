@@ -22,7 +22,7 @@ public class Bubble extends Pane {
     @FXML
     public Circle fxBubble;
     private boolean enabled;
-    private double radius;
+    private int scoreValue;
     final private double gravity = 980;
     private double bounce;  // nýr hraði kúlu eftir hún rekst á gólf/loft
     private double xStartPos;
@@ -33,7 +33,6 @@ public class Bubble extends Pane {
     private double xStartSpeed;
     private double yStartSpeed;
 
-    public String yoyoyo;
     private double xSpeed;    // láréttur hraði kúlu
     private double ySpeed;    // lóðréttur hraði kúlu
 
@@ -59,16 +58,19 @@ public class Bubble extends Pane {
         if(getId() != null){
             switch(getId().substring(0,1)){
                 case "l":
+                    scoreValue = 400;
                     fxBubble.setRadius(35);
                     fxBubble.setFill(Color.RED);
                     bounce = -600;
                     break;
                 case "m":
+                    scoreValue = 200;
                     fxBubble.setRadius(25);
                     fxBubble.setFill(Color.GREEN);
                     bounce = -450;
                     break;
                 case "s":
+                    scoreValue = 50;
                     fxBubble.setRadius(10);
                     fxBubble.setFill(Color.BLUE);
                     bounce = -360;
@@ -130,6 +132,7 @@ public class Bubble extends Pane {
     }
 
     public void blowUp() {
+        GameManager.increaseScore(scoreValue);
         Hljod.pop();
         disable();
     }  // Eftir að kúla skemmist, hverfur (og býr til 2 nýjar kúlur ef á við)
