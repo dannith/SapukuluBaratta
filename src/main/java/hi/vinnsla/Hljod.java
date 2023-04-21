@@ -19,7 +19,7 @@ public class Hljod {
     private static final String l5 = "target/classes/hi/Tonlist/l5.wav";
     private static MediaPlayer mediaPlayer1;
     private static MediaPlayer mediapop;
-    private static boolean playing = false;
+    private static boolean muted = false;
 
     public static void main() {
         if(mediaPlayer1 != null) {
@@ -30,29 +30,26 @@ public class Hljod {
             mediaPlayer1 = new MediaPlayer(media1);
             mediaPlayer1.setCycleCount(MediaPlayer.INDEFINITE);
             mediaPlayer1.play();
-            playing = true;
     }
 
     public static void toggleMain(){
-        if(mediaPlayer1 != null) {
+        if(mediaPlayer1 != null && !muted) {
             mediaPlayer1.setMute(!mediaPlayer1.isMute());
         }
     }
 
     public static void mainMute() {
-        if (mediaPlayer1.getVolume() > 0) {
-            mediaPlayer1.setVolume(0);
-        }
+        muted = true;
+        if(mediaPlayer1 != null) mediaPlayer1.setMute(true);
     }
 
     public static void mainunMute() {
-        if (mediaPlayer1.getVolume() == 0) {
-            mediaPlayer1.setVolume(1);
-        }
+        muted = false;
+        if(mediaPlayer1 != null) mediaPlayer1.setMute(false);
     }
 
     public static void level1(){
-        if(mediaPlayer1 != null) {
+        if(mediaPlayer1 != null && !muted) {
             mediaPlayer1.stop();
             File file1 = new File(l1);
             Media media1 = new Media(file1.toURI().toString());
@@ -62,7 +59,7 @@ public class Hljod {
         }
     }
     public static void level2(){
-            if(mediaPlayer1 != null) {
+            if(mediaPlayer1 != null && !muted) {
                 mediaPlayer1.stop();
                 File file1 = new File(l2);
                 Media media1 = new Media(file1.toURI().toString());
@@ -72,7 +69,7 @@ public class Hljod {
             }
     }
     public static void level3(){
-                if(mediaPlayer1 != null) {
+                if(mediaPlayer1 != null && !muted) {
                     mediaPlayer1.stop();
                     File file1 = new File(l3);
                     Media media1 = new Media(file1.toURI().toString());
@@ -82,7 +79,7 @@ public class Hljod {
                 }
     }
     public static void level4(){
-                    if(mediaPlayer1 != null) {
+                    if(mediaPlayer1 != null && !muted) {
                         mediaPlayer1.stop();
                         File file1 = new File(l4);
                         Media media1 = new Media(file1.toURI().toString());
@@ -92,7 +89,7 @@ public class Hljod {
                     }
     }
     public static void level5(){
-                        if(mediaPlayer1 != null) {
+                        if(mediaPlayer1 != null && !muted) {
                             mediaPlayer1.stop();
                             File file1 = new File(l5);
                             Media media1 = new Media(file1.toURI().toString());

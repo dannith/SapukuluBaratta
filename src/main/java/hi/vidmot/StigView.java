@@ -22,7 +22,7 @@ public class StigView extends Pane {
             throw new RuntimeException(exception);
         }
 
-        fxScoreBoard.getItems().add(GameManager.getScore());
+        //fxScoreBoard.getItems().add(GameManager.getScore());
 
     }
 }

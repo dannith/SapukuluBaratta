@@ -75,8 +75,14 @@ public class Player extends Pane {
 
     public void update(double deltaTime, List<Bubble> bubbles, List<Bubble> extraBubbles) {
         if(inputKeys.get(KeyCode.LEFT) != inputKeys.get(KeyCode.RIGHT)){
-            if(inputKeys.get(KeyCode.LEFT)) fxPlayer.setX(fxPlayer.getX() - xSpeed * deltaTime);
-            else fxPlayer.setX(fxPlayer.getX() + xSpeed * deltaTime);
+            if(inputKeys.get(KeyCode.LEFT)) {
+                fxPlayer.setX(fxPlayer.getX() - xSpeed * deltaTime);
+                if(fxPlayer.getX() + getLayoutX() < 10) fxPlayer.setX(10 - getLayoutX());
+            }
+            else{
+                fxPlayer.setX(fxPlayer.getX() + xSpeed * deltaTime);
+                if(fxPlayer.getX() + getLayoutX() > 790) fxPlayer.setX(790 - getLayoutX());
+            }
         }
         if(inputKeys.get(KeyCode.UP) && !hookOut){
             Hljod.shoot();
